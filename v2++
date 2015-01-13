@@ -40,7 +40,8 @@
         $(preview)
           .attr('src', video.assets.thumb_mp4.url)
           .attr('controls', true)
-          .attr('autoplay', true);
+          .attr('autoplay', true)
+          .attr('loop', true);
 
         $(description)
           .text(video.description)
