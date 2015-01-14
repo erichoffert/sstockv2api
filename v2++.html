@@ -99,7 +99,9 @@
         var clientSecret = $('input[name=client_secret').val();
         var media_url;
         
-        if (media_type === 'image' or media_type === 'video')
+        if (media_type === 'image')
+          media_url = 'https://api.shutterstock.com/v2/' + media_type + 's/search';
+        else if (media_type === 'video')
           media_url = 'https://api.shutterstock.com/v2/' + media_type + 's/search';
         else
           media_url = 'https://api.shutterstock.com/v2/' + media_type + '/search';
