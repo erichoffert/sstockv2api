@@ -128,7 +128,7 @@
       $(function() {
         $('#search-form').submit(function() {
           // Clear current media results
-          $('#image-search-results, #video-search-results', #audio-search-results').empty();
+          $('#image-search-results, #video-search-results, #audio-search-results').empty();
 
           // Serialize form options
           var opts = $("input[value != '']", this).serialize();
