@@ -54,13 +54,45 @@
 
         return wrapper;
       }
+      
+      // Create audio wrapper component
+      function createAudioComponent(audio) {
+        var wrapper = $('<div>');
+        var preview = $('<audio>');
+        var description = $('<p>');
+
+        $(preview)
+          .attr('src', audio.assets.preview.url)
+          .attr('controls', true)
+
+        $(description)
+          .text(audio.description)
+          .attr('title', audio.description);
+
+        $(wrapper)
+          .addClass('media-wrapper audio')
+          .append(preview)
+          .append(description);
+
+        return wrapper;
+      }
 
       // Search media by type
       function search(opts, media_type) {
         var $container = $('#' + media_type + '-search-results');
-        var createComponentFunc = media_type === 'image'
-          ? createImageComponent
-          : createVideoComponent;
+     //   var createComponentFunc = media_type === 'image'
+     //     ? createImageComponent
+     //     : createVideoComponent;
+     
+        var createComponentFunc; 
+        if (media_type === 'image') {
+          createComponentFunc = createImageComponent;
+        }
+        else if (media_type === 'video') {
+          createComponentFunc = createVideoComponent;
+        }
+        else
+          createComponentFunc = createAudioComponent;
 
         // Get Client ID and Client Secret for use in the Authorization header
         var clientId = $('input[name=client_id]').val();
@@ -96,7 +128,7 @@
       $(function() {
         $('#search-form').submit(function() {
           // Clear current media results
-          $('#image-search-results, #video-search-results').empty();
+          $('#image-search-results, #video-search-results', #audio-search-results').empty();
 
           // Serialize form options
           var opts = $("input[value != '']", this).serialize();
@@ -106,6 +138,9 @@
 
           // Search and display videos
           search(opts, 'video');
+          
+          // Search and display audio
+          search(opts, 'audio');
 
           return false;
         });
@@ -237,6 +272,12 @@
       <div class="media">
         <h2>Videos</h2>
         <div id="video-search-results"></div>
+      </div>
+    </div>
+    
+     <div class="media">
+        <h2>Audio</h2>
+        <div id="audio-search-results"></div>
       </div>
     </div>
   </body>
