@@ -59,15 +59,15 @@
       function createAudioComponent(audio) {
         var wrapper = $('<div>');
         var preview = $('<audio>');
-        var title = $('<p>');
+        var description = $('<p>');
 
         $(preview)
           .attr('src', audio.assets.preview_mp3.url)
           .attr('controls', true)
 
-        $(title)
-          .text(audio.title)
-          .attr('title', audio.releases.title);
+        $(description)
+          .text(audio.description)
+          .attr('title', audio.description);
 
         $(wrapper)
           .addClass('media-wrapper audio')
