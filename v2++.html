@@ -97,9 +97,15 @@
         // Get Client ID and Client Secret for use in the Authorization header
         var clientId = $('input[name=client_id]').val();
         var clientSecret = $('input[name=client_secret').val();
+        var media_url;
+        
+        if (media_type === 'image' or media_type === 'video')
+          media_url = 'https://api.shutterstock.com/v2/' + media_type + 's/search';
+        else
+          media_url = 'https://api.shutterstock.com/v2/' + media_type + '/search';
 
         var jqxhr = $.ajax({
-          url: 'https://api.shutterstock.com/v2/' + media_type + 's/search',
+          url: media_url,
           data: opts,
           headers: {
             // Base 64 encode 'client_id:client_secret'
