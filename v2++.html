@@ -10,6 +10,8 @@
         var thumbWrapper = $('<div>');
         var thumbnail = $('<img>');
         var description = $('<p>');
+        var $container = $('"http://www.shutterstock.com/pic.mhtml?id=' + image.id + '"');
+
 
         $(thumbnail).attr('src', image.assets.preview.url);
 
@@ -22,9 +24,9 @@
         $(description)
           .text(image.description)
           .attr('title', image.description)
-          .append('<br><a href = "http://www.shutterstock.com/pic.mhtml?id=')
-          .append(image.id)
-          .append('">More info</a><br>');
+          .append('<br><a href = ')
+          .append($container)
+          .append('>More info</a><br>');
 
         $(wrapper)
           .addClass('media-wrapper image')
