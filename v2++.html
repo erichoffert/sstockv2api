@@ -10,7 +10,7 @@
         var thumbWrapper = $('<div>');
         var thumbnail = $('<img>');
         var description = $('<p>');
-        var $container = $('"http://www.shutterstock.com/pic.mhtml?id=' + image.id + '"');
+        var page_url = '"http://www.shutterstock.com/pic.mhtml?id=' + image.id + '"';
 
 
         $(thumbnail).attr('src', image.assets.preview.url);
@@ -25,7 +25,7 @@
           .text(image.description)
           .attr('title', image.description)
           .append('<br><a href = ')
-          .append($container)
+          .append(page_url)
           .append('>More info</a><br>');
 
         $(wrapper)
