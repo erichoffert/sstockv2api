@@ -11,6 +11,7 @@
         var thumbnail = $('<img>');
         var description = $('<p>');
         var page_url = '"http://www.shutterstock.com/pic.mhtml?id=' + image.id + '"';
+        var page_info = '<br><a href =' + page_url + '>More info</a><br>';
 
 
         $(thumbnail).attr('src', image.assets.preview.url);
@@ -24,9 +25,7 @@
         $(description)
           .text(image.description)
           .attr('title', image.description)
-          .append('<br><a href = ')
-          .append(page_url)
-          .append('>More info</a><br>');
+          .append(page_info);
 
         $(wrapper)
           .addClass('media-wrapper image')
