@@ -22,7 +22,9 @@
         $(description)
           .text(image.description)
           .attr('title', image.description)
-          .append('<br>test<br>');
+          .append('<br><a href = "http://www.shutterstock.com/pic.mhtml?id=')
+          .append(image.id)
+          .append('">More info</a><br>');
 
         $(wrapper)
           .addClass('media-wrapper image')
