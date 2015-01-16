@@ -11,7 +11,7 @@
         var thumbnail = $('<img>');
         var description = $('<p>');
         var page_url = '"http://www.shutterstock.com/pic.mhtml?id=' + image.id + '"';
-        var page_info = '<br><a href =' + page_url + '>Download image</a><br>';
+        var page_info = '<br><a href =' + page_url + '>Donwload image</a><br>';
 
 
         $(thumbnail).attr('src', image.assets.preview.url);
@@ -66,7 +66,6 @@
         var wrapper = $('<div>');
         var preview = $('<audio>');
         var description = $('<p>');
-        var genre = '<br><i>Music genre: ' + audio.description + '</i><br>';
 
 
         $(preview)
@@ -75,8 +74,7 @@
 
         $(description)
           .text(audio.description)
-          .attr('title', audio.description)
-          .append(genre);
+          .attr('title', audio.description);
 
         $(wrapper)
           .addClass('media-wrapper audio')
