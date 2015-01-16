@@ -66,7 +66,7 @@
         var wrapper = $('<div>');
         var preview = $('<audio>');
         var description = $('<p>');
-        var duration = '<br><i>Music duration(seconds): ' + audio.duration + '</i><br>';
+        var genre = '<br><i>Music genre: ' + audio.genre + '</i><br>';
 
 
         $(preview)
@@ -76,7 +76,7 @@
         $(description)
           .text(audio.description)
           .attr('title', audio.description)
-          .append(duration);
+          .append(genre);
 
         $(wrapper)
           .addClass('media-wrapper audio')
