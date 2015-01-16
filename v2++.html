@@ -11,7 +11,7 @@
         var thumbnail = $('<img>');
         var description = $('<p>');
         var page_url = '"http://www.shutterstock.com/pic.mhtml?id=' + image.id + '"';
-        var page_info = '<br><a href =' + page_url + '>More info</a><br>';
+        var page_info = '<br><a href =' + page_url + '>Donwload image</a><br>';
 
 
         $(thumbnail).attr('src', image.assets.preview.url);
@@ -40,6 +40,7 @@
         var wrapper = $('<div>');
         var preview = $('<video>');
         var description = $('<p>');
+        var duration = '<br>Video duration (seconds):' + video.duration + '<br>';
 
         $(preview)
           .attr('src', video.assets.thumb_mp4.url)
@@ -49,8 +50,9 @@
 
         $(description)
           .text(video.description)
-          .attr('title', video.description);
-
+          .attr('title', video.description)
+          append(duration);
+         
         $(wrapper)
           .addClass('media-wrapper video')
           .append(preview)
