@@ -40,7 +40,7 @@
         var wrapper = $('<div>');
         var preview = $('<video>');
         var description = $('<p>');
-        var duration = '<br>Video duration (seconds):' + video.duration + '<br>';
+        var duration = '<br><i>Video duration(seconds): ' + video.duration + '</i><br>';
 
         $(preview)
           .attr('src', video.assets.thumb_mp4.url)
@@ -66,6 +66,8 @@
         var wrapper = $('<div>');
         var preview = $('<audio>');
         var description = $('<p>');
+        var duration = '<br><i>Music duration(seconds): ' + music.duration + '</i><br>';
+
 
         $(preview)
           .attr('src', audio.assets.preview_mp3.url)
@@ -73,7 +75,8 @@
 
         $(description)
           .text(audio.description)
-          .attr('title', audio.description);
+          .attr('title', audio.description)
+          .append(duration);
 
         $(wrapper)
           .addClass('media-wrapper audio')
