@@ -44,12 +44,25 @@
         var duration = '<br><i>Video duration(seconds): ' + video.duration + '</i><br>';
         var page_url = '"http://www.shutterstock.com/video/clip-' + video.id + '-stock-footage-' + video.description + '.html"';
         var page_info = '';
-        
+        var video_preview = $('input[name=video_preview').val();
+        var video_preview_url = '';
+
         page_url = page_url.replace(/\s/g, "-");
         page_info = '<br><a href =' + page_url + '>Download video</a><br>';
+        
+        window.alert(video_preview);
+        
+        if (video_preview === 'small') {
+          video_preview_url = video.assets.thumb_mp4.url;
+        }
+        else if (video_preview === 'large') {
+          video_preview_url = video.assets.preview_mp4.url;
+        }
+        
+        window.alert(video_preview_url);
 
         $(preview)
-          .attr('src', video.assets.preview_mp4.url)
+          .attr('src', video_preview_url)
           .attr('controls', true)
           .attr('autoplay', true)
           .attr('loop', true);
@@ -281,6 +294,12 @@
           <input name="people_number" type="radio" value="2">2</input>
           <input name="people_number" type="radio" value="3">3</input>
           <input name="people_number" type="radio" value="4">4+</input>
+        </div>
+        
+        <div>
+          <label for="video_preview">Video Preview:</label>
+          <input name="video_preview" type="radio" value="small" checked>Small</input>
+          <input name="video_preview" type="radio" value="large">Large</input>
         </div>
 
         <input name="submit" type="submit" value="Submit"></input>
