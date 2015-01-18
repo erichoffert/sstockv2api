@@ -73,13 +73,12 @@
 
         $(preview)
           .attr('src', audio.assets.preview_mp3.url)
-          .attr('controls', true)
+          .attr('controls', true);
 
         $(description)
           .text(audio.description)
-          .attr('title', audio.description);
+          .attr('title', audio.description)
           .append(page_info);
-
 
         $(wrapper)
           .addClass('media-wrapper audio')
@@ -92,9 +91,6 @@
       // Search media by type
       function search(opts, media_type) {
         var $container = $('#' + media_type + '-search-results');
-     //   var createComponentFunc = media_type === 'image'
-     //     ? createImageComponent
-     //     : createVideoComponent;
      
         var createComponentFunc; 
         if (media_type === 'image') {
