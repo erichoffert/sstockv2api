@@ -92,7 +92,9 @@
 
         $(preview)
           .attr('src', audio.assets.preview_mp3.url)
-          .attr('controls', true);
+          .attr('controls', true)
+          .attr('loop', true);
+
 
         $(description)
           .text(audio.description)
