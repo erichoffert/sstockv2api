@@ -41,6 +41,12 @@
         var preview = $('<video>');
         var description = $('<p>');
         var duration = '<br><i>Video duration(seconds): ' + video.duration + '</i><br>';
+        var page_url = '"http://www.shutterstock.com/video/clip-' + video.id + '-stock-footage-' + video.title + '.html"';
+        var page_info = '';
+        
+        page_url = page_url.replace(/\s/g, "-");
+        page_info = '<br><a href =' + page_url + '>Download video</a><br>';
+        window.alert(page_info);
 
         $(preview)
           .attr('src', video.assets.thumb_mp4.url)
