@@ -69,7 +69,7 @@
         var page_url = '"http://www.shutterstock.com/music/track/' + audio.title + '/' + audio.id + '"';
         var page_info = '<br><a href =' + page_url + '>Download music</a><br>';
 
-        console.log(page_info);
+        window.alert(page_info);
 
         $(preview)
           .attr('src', audio.assets.preview_mp3.url)
