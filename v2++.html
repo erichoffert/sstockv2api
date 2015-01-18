@@ -168,7 +168,8 @@
           // Serialize form options
           var opts = $("input[value != '']", this).serialize();
           
-          window.alert(opts);
+          var video_preview_option = $('input[name=video_preview]').val();
+          window.alert(video_preview_option);
 
           // Search and display images
           search(opts, 'image');
