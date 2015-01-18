@@ -67,9 +67,12 @@
         var preview = $('<audio>');
         var description = $('<p>');
         var page_url = '"http://www.shutterstock.com/music/track/' + audio.title + '/' + audio.id + '"';
-        var page_info = '<br><a href =' + page_url + '>Download music</a><br>';
+        var page_info = '';
+        
+        page_url = page_url.replace(/\s/g, "-");
+        page_info = '<br><a href =' + page_url + '>Download music</a><br>';
 
-        page_info = page_info.replace(/\s/g, "-");
+        window.alert(page_info);
 
         $(preview)
           .attr('src', audio.assets.preview_mp3.url)
