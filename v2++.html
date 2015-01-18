@@ -165,13 +165,9 @@
           // Clear current media results
           $('#image-search-results, #video-search-results, #audio-search-results').empty();
 
-          var video_preview_option = $('input[name=video_preview]').val();
-
           // Serialize form options
           var opts = $("input[value != '']", this).serialize();
           
-          window.alert(video_preview_option);
-
           // Search and display images
           search(opts, 'image');
 
@@ -296,12 +292,6 @@
           <input name="people_number" type="radio" value="2">2</input>
           <input name="people_number" type="radio" value="3">3</input>
           <input name="people_number" type="radio" value="4">4+</input>
-        </div>
-        
-        <div>
-          <label for="video_preview">Video Preview:</label>
-          <input name="video_preview" type="radio" value="large" checked>Large</input>
-          <input name="video_preview" type="radio" value="small">Small</input>
         </div>
         
         <input name="submit" type="submit" value="Submit"></input>
