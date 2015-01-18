@@ -165,10 +165,11 @@
           // Clear current media results
           $('#image-search-results, #video-search-results, #audio-search-results').empty();
 
+          var video_preview_option = $('input[name=video_preview]').val();
+
           // Serialize form options
           var opts = $("input[value != '']", this).serialize();
           
-          var video_preview_option = $('input[name=video_preview]').val();
           window.alert(video_preview_option);
 
           // Search and display images
