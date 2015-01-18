@@ -72,8 +72,6 @@
         page_url = page_url.replace(/\s/g, "-");
         page_info = '<br><a href =' + page_url + '>Download music</a><br>';
 
-        window.alert(page_info);
-
         $(preview)
           .attr('src', audio.assets.preview_mp3.url)
           .attr('controls', true);
