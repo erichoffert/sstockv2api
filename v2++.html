@@ -50,7 +50,7 @@
         page_url = page_url.replace(/\s/g, "-");
         page_info = '<br><a href =' + page_url + '>Download video</a><br>';
         
-        window.alert(video_preview);
+        //window.alert(video_preview);
         
         if (video_preview === 'small') {
           video_preview_url = video.assets.thumb_mp4.url;
@@ -59,7 +59,7 @@
           video_preview_url = video.assets.preview_mp4.url;
         }
         
-        window.alert(video_preview_url);
+        //window.alert(video_preview_url);
 
         $(preview)
           .attr('src', video_preview_url)
