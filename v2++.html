@@ -46,7 +46,6 @@
         
         page_url = page_url.replace(/\s/g, "-");
         page_info = '<br><a href =' + page_url + '>Download video</a><br>';
-        window.alert(page_info);
 
         $(preview)
           .attr('src', video.assets.thumb_mp4.url)
@@ -57,7 +56,8 @@
         $(description)
           .text(video.description)
           .attr('title', video.description)
-          .append(duration);
+          .append(duration)
+          .append(page_info);
          
         $(wrapper)
           .addClass('media-wrapper video')
