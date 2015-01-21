@@ -184,6 +184,8 @@
           
           // Search and display audio
           search(opts, 'audio');
+          
+          myFunction(video_playlist);
 
           return false;
         });
@@ -204,6 +206,8 @@
       .attr('width', 640)
       .attr('height', 360)
       .attr('autobuffer', true);
+      
+      return video_tag
 
     }
   
@@ -343,9 +347,9 @@
       </div>
     </div>
     
-     <div class="playlist">
+     <div class="media">
         <h2>Playlist</h2>
-            <button onclick="myFunction(video_playlist)">Play videos</button>
+        <div id="video-playlist-results"></div>
       </div>
     </div>
 
