@@ -13,6 +13,7 @@
    "http://ak3.picdn.net/shutterstock/videos/2964829/preview/stock-footage-rough-sea-loop-d-a-loop-of-big-waves-in-an-agitated-ocean-camera-goes-underwater-several-times.mp4",
    "http://ak6.picdn.net/shutterstock/videos/4470491/preview/stock-footage-a-young-woman-with-a-slender-figure-is-engaged-in-gymnastics-at-sea-at-sunrise-she-makes-a-run.mp4"]
 
+    window.alert($('input[name=duration]').val());
    
    window.onload = function (){ 
    videoPlayer = document.getElementById("homevideo");
@@ -30,6 +31,12 @@
 <body>
 <!-- Code adapted from http://stackoverflow.com/questions/16339181/html5-video-video-playlist -->
 
+<form id="duration">
+  First name: <input type="integer" name="duration"><br>
+  <input type="submit" value="Submit">
+</form>
+
+window.alert(duration);
 
 <center>
 <video id="homevideo" width="640" height="360" autoplay autobuffer controls src="http://ak2.picdn.net/shutterstock/videos/4664129/preview/stock-footage-aerial-shot-of-container-ship-in-ocean.mp4"></video>
