@@ -53,7 +53,6 @@
         page_url = page_url.replace(/\s/g, "-");
         page_info = '<br><a href =' + page_url + '>Download video</a><br>';
         
-        
         if (video_preview === 'small') {
           video_preview_url = video.assets.thumb_mp4.url;
         }
@@ -62,6 +61,7 @@
         }
         
         video_playlist[video_item] = video_preview_url;
+        window.alert(video_playlist[video_item]);
         video_item++;
 
         $(preview)
@@ -185,31 +185,10 @@
           // Search and display audio
           search(opts, 'audio');
           
-          myFunction(video_playlist);
-
           return false;
         });
       });
       
-    function myFunction(playlist) { 
-    var videoPlayer;
-    var video_count = 1;
-    var video_tag = $('<video>');
-
-    window.alert(playlist[0]);
-    
-      $(video_tag)
-      .attr('id', "homevideo")
-      .attr('src', playlist[0])
-      .attr('controls', true)
-      .attr('autoplay', true)
-      .attr('width', 640)
-      .attr('height', 360)
-      .attr('autobuffer', true);
-      
-      return video_tag
-
-    }
   
     </script>
 
@@ -347,11 +326,6 @@
       </div>
     </div>
     
-     <div class="media">
-        <h2>Playlist</h2>
-        <div id="video-playlist-results"></div>
-      </div>
-    </div>
 
   </body>
 </html>
