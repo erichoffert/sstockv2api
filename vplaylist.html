@@ -15,24 +15,15 @@
    "http://ak6.picdn.net/shutterstock/videos/4470491/preview/stock-footage-a-young-woman-with-a-slender-figure-is-engaged-in-gymnastics-at-sea-at-sunrise-she-makes-a-run.mp4"]
     
     $( document ).ready(function() {
-        var wrapper = $('<div>');
-        var preview = $('<video>');
+
         
         window.alert( "document loaded" );
 
-        $(preview)
-          .attr('id',"homevideo")
-          .attr('src', video_playlist[0])
-          .attr('controls', true)
-          .attr('autoplay', true)
-          .attr('muted', true);
-          
-        $(wrapper)
-            .append(preview);
+        $("#homevideo").html('<source src="'+video_playlist[0]+'"></source>' );
+        document.getElementById("homevideo").play();
           
         window.alert( "video loaded" );
         
-        return wrapper;
 
       });
  
