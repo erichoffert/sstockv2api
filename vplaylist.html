@@ -1,0 +1,27 @@
+// Code adapted from http://stackoverflow.com/questions/16339181/html5-video-video-playlist
+
+<!doctype html>
+<html lang="en">
+    <head>
+   <meta charset="utf-8" />
+   <title>HTML5_video</title>
+   <script>
+   var videoPlayer;
+   var video_count = 1;
+   window.onload = function (){ 
+   videoPlayer = document.getElementById("homevideo");
+   videoPlayer.addEventListener("ended", function (){
+   video_count++;
+   if (video_count == 4) video_count = 1;
+   var nextVideo = video_count+".mp4";
+   videoPlayer.src = nextVideo;
+   }, false);
+   }
+   </script>
+</head>
+<body>
+
+<video id="homevideo" width="640" height="360" autoplay autobuffer src="1.mp4"></video>          
+
+</body>
+</html>
