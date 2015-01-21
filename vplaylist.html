@@ -15,22 +15,28 @@
    "http://ak6.picdn.net/shutterstock/videos/4470491/preview/stock-footage-a-young-woman-with-a-slender-figure-is-engaged-in-gymnastics-at-sea-at-sunrise-she-makes-a-run.mp4"]
     
     $( document ).ready(function() {
+        var wrapper = $('<div>');
+        var preview = $('<video>');
+        
         window.alert( "document loaded" );
-        var video = $('<video>');
-        $(video)
+
+        $(preview)
           .attr('id',"homevideo")
           .attr('src', video_playlist[0])
           .attr('controls', true)
           .attr('autoplay', true)
           .attr('muted', true);
+          
+        $(wrapper)
+            .append(preview);
+          
         window.alert( "video loaded" );
+        
+        return wrapper;
 
       });
  
-    $( window ).load(function() {
-        console.log( "window loaded" );
-    });
-
+    
    window.onload = function (){ 
    videoPlayer = document.getElementById("homevideo");
    videoPlayer.addEventListener("ended", function (){
@@ -50,6 +56,6 @@
 <!-- Code adapted from http://stackoverflow.com/questions/16339181/html5-video-video-playlist -->
 
 <!-- <video id="homevideo" width="640" height="360" autoplay autobuffer controls src="http://ak2.picdn.net/shutterstock/videos/4664129/preview/stock-footage-aerial-shot-of-container-ship-in-ocean.mp4"></video> -->
-<p> Video!</p>
+
 </body>
 </html>
