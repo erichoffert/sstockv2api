@@ -27,7 +27,7 @@
         $(obj).attr('controls', 'true');
         $(obj).attr('autoplay', 'true');
         
-        window.alert(obj);
+        window.alert((obj).attr('id', 'homevideo'));
 
         source = document.createElement('source');
         $(source).attr('type', 'video/mp4');
@@ -38,7 +38,7 @@
 
         window.alert(source);
 
-        document.getElementById("homevideo").play();
+        document.getElementById('homevideo').play();
           
         window.alert( "video loaded" );
         
@@ -47,7 +47,7 @@
  
     
    window.onload = function (){ 
-   videoPlayer = document.getElementById("homevideo");
+   videoPlayer = document.getElementById('homevideo');
    videoPlayer.addEventListener("ended", function (){
    video_count++;
    if (video_count == 5) video_count = 0;
