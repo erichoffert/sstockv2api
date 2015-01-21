@@ -13,7 +13,14 @@
    "http://ak3.picdn.net/shutterstock/videos/2964829/preview/stock-footage-rough-sea-loop-d-a-loop-of-big-waves-in-an-agitated-ocean-camera-goes-underwater-several-times.mp4",
    "http://ak6.picdn.net/shutterstock/videos/4470491/preview/stock-footage-a-young-woman-with-a-slender-figure-is-engaged-in-gymnastics-at-sea-at-sunrise-she-makes-a-run.mp4"]
     
-   
+    $( document ).ready(function() {
+        console.log( "document loaded" );
+    });
+ 
+    $( window ).load(function() {
+        console.log( "window loaded" );
+    });
+
    window.onload = function (){ 
    videoPlayer = document.getElementById("homevideo");
    videoPlayer.addEventListener("ended", function (){
