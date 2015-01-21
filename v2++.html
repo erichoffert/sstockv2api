@@ -196,7 +196,19 @@
     var video_count = 1;
     var video_tag = $('<video>');
 
-  $(video_tag)
+
+    
+    window.onload = function (){ 
+     videoPlayer = document.getElementById("homevideo");
+     videoPlayer.addEventListener("ended", function (){
+       video_count++;
+       if (video_count == 5) video_count = 1;
+       var nextVideo = video_playlist[video_count];
+       videoPlayer.src = nextVideo;
+     }, false);
+    }
+    
+      $(video_tag)
       .attr('id', "homevideo")
       .attr('src', video_playlist[0])
       .attr('controls', true)
@@ -204,14 +216,7 @@
       .attr('width', 640)
       .attr('height', 360)
       .attr('autobuffer', true);
-          
-   videoPlayer = document.getElementById("homevideo");
-   videoPlayer.addEventListener("ended", function (){
-     video_count++;
-     if (video_count == 5) video_count = 1;
-     var nextVideo = video_playlist[video_count];
-     videoPlayer.src = nextVideo;
-   }, false);
+  
   }
   
     </script>
