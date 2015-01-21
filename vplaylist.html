@@ -15,8 +15,17 @@
    "http://ak6.picdn.net/shutterstock/videos/4470491/preview/stock-footage-a-young-woman-with-a-slender-figure-is-engaged-in-gymnastics-at-sea-at-sunrise-she-makes-a-run.mp4"]
     
     $( document ).ready(function() {
-        console.log( "document loaded" );
-    });
+        window.alert( "document loaded" );
+        var video = $('<video>');
+        $(video)
+          .attr('id',"vacationvideo")
+          .attr('src', video_playlist[0])
+          .attr('controls', true)
+          .attr('autoplay', true)
+          .attr('muted', true);
+        window.alert( "video loaded" );
+
+      });
  
     $( window ).load(function() {
         console.log( "window loaded" );
