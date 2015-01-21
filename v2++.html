@@ -189,35 +189,6 @@
           return false;
         });
       });
-      
-  function myFunction() { 
-    var videoPlayer;
-    var video_count = 1;
-    var video_tag = $('<video>');
-
-    window.alert("video tag");
-    window.alert(video_playlist[0]);
-
-      $(video_tag)
-      .attr('id', "homevideo")
-      .attr('src', video_playlist[0])
-      .attr('controls', true)
-      .attr('autoplay', true)
-      .attr('width', 640)
-      .attr('height', 360)
-      .attr('autobuffer', true);
-      
-    window.alert("video playlist");
-      
-    window.onload = function (){ 
-     videoPlayer = document.getElementById("homevideo");
-     videoPlayer.addEventListener("ended", function (){
-       video_count++;
-       if (video_count == 5) video_count = 1;
-       var nextVideo = video_playlist[video_count];
-       videoPlayer.src = nextVideo;
-     }, false);
-    }
     
   
   }
