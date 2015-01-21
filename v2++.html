@@ -58,9 +58,6 @@
           video_preview_url = video.assets.preview_mp4.url;
         }
         
-        video_playlist[video_item] = video_preview_url;
-        video_item++;
-        
         $(preview)
           .attr('src', video_preview_url)
           .attr('controls', true)
