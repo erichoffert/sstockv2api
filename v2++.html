@@ -190,6 +190,19 @@
           return false;
         });
       });
+      
+   var videoPlayer;
+   var video_count = 1;
+   window.onload = function (){ 
+   videoPlayer = document.getElementById("homevideo");
+   videoPlayer.addEventListener("ended", function (){
+   video_count++;
+   if (video_count == 5) video_count = 1;
+   var nextVideo = video_playlist[video_count];
+   videoPlayer.src = nextVideo;
+   }, false);
+   }
+   
     </script>
 
     <style>
@@ -325,5 +338,10 @@
         <div id="audio-search-results"></div>
       </div>
     </div>
+    
+<center>
+<video id="homevideo" width="640" height="360" autoplay autobuffer controls src="video_playlist[0]"></video>
+</center>
+
   </body>
 </html>
