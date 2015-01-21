@@ -18,9 +18,9 @@
    videoPlayer = document.getElementById("homevideo");
    videoPlayer.addEventListener("ended", function (){
    video_count++;
-   if (video_count == 5) video_count = 1;
+   if (video_count == 5) video_count = 0;
    //var nextVideo = video_count+".mp4";
-   window.alert(video_playlist[video_count]);
+   //window.alert(video_playlist[video_count]);
    var nextVideo = video_playlist[video_count];
    videoPlayer.src = nextVideo;
    }, false);
