@@ -194,9 +194,17 @@
   function myFunction() { 
     var videoPlayer;
     var video_count = 1;
-    <center>
-    <video id="homevideo" width="640" height="360" autoplay autobuffer controls src="video_playlist[0]"></video>
-    </center>
+    var video_tag = ($'<video>');
+
+  $(video_tag)
+      .attr('id', "homevideo")
+      .attr('src', video_playlist[0])
+      .attr('controls', true)
+      .attr('autoplay', true)
+      .attr('width', 640)
+      .attr('height', 360)
+      .attr('autobuffer', true);
+          
    videoPlayer = document.getElementById("homevideo");
    videoPlayer.addEventListener("ended", function (){
      video_count++;
