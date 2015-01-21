@@ -195,6 +195,15 @@
     var video_tag = $('<video>');
 
     window.alert(playlist[0]);
+    
+      $(video_tag)
+      .attr('id', "homevideo")
+      .attr('src', playlist[0])
+      .attr('controls', true)
+      .attr('autoplay', true)
+      .attr('width', 640)
+      .attr('height', 360)
+      .attr('autobuffer', true);
 
     }
   
