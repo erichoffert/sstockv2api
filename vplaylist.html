@@ -6,14 +6,22 @@
    <script>
    var videoPlayer;
    var video_count = 1;
-   var video_playlist = ["1.mp4","2.mp4","3.mp4","4.mp4","5.mp4"];
+   var video_playlist = 
+   ["http://ak2.picdn.net/shutterstock/videos/4664129/preview/stock-footage-aerial-shot-of-container-ship-in-ocean.mp4",
+   "http://ak8.picdn.net/shutterstock/videos/3711827/preview/stock-footage-high-quality-looping-animation-of-ocean-waves-from-underwater-with-floating-plankton-light-rays.mp4",
+   "http://ak2.picdn.net/shutterstock/videos/4147426/preview/stock-footage-surfer-on-blue-ocean-wave-getting-barreled.mp4",
+   "http://ak3.picdn.net/shutterstock/videos/2964829/preview/stock-footage-rough-sea-loop-d-a-loop-of-big-waves-in-an-agitated-ocean-camera-goes-underwater-several-times.mp4",
+   "http://ak6.picdn.net/shutterstock/videos/4470491/preview/stock-footage-a-young-woman-with-a-slender-figure-is-engaged-in-gymnastics-at-sea-at-sunrise-she-makes-a-run.mp4"]
+
    
    window.onload = function (){ 
    videoPlayer = document.getElementById("homevideo");
    videoPlayer.addEventListener("ended", function (){
    video_count++;
    if (video_count == 5) video_count = 1;
-   var nextVideo = video_count+".mp4";
+   //var nextVideo = video_count+".mp4";
+   window.alert(video_playlist[videocount]);
+   var nextVideo = video_playlist[videocount];
    videoPlayer.src = nextVideo;
    }, false);
    }
@@ -23,7 +31,7 @@
 <!-- Code adapted from http://stackoverflow.com/questions/16339181/html5-video-video-playlist -->
 
 <center>
-<video id="homevideo" width="640" height="360" autoplay autobuffer controls src="1.mp4"></video>
+<video id="homevideo" width="640" height="360" autoplay autobuffer controls src="http://ak2.picdn.net/shutterstock/videos/4664129/preview/stock-footage-aerial-shot-of-container-ship-in-ocean.mp4"></video>
 </center>
 
 </body>
