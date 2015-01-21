@@ -19,7 +19,9 @@
         
         window.alert( "document loaded" );
 
-        $("#homevideo").html('<source width = "640" height = "360" src="http://ak2.picdn.net/shutterstock/videos/4664129/preview/stock-footage-aerial-shot-of-container-ship-in-ocean.mp4"></source>' );
+        var video = $("<video/>"); 
+        video.append($("<source/>").attr("src", "http://ak2.picdn.net/shutterstock/videos/4664129/preview/stock-footage-aerial-shot-of-container-ship-in-ocean.mp4").attr("type", "video/mp4");
+        $("#homevideo").html(video);
         document.getElementById("homevideo").play();
           
         window.alert( "video loaded" );
