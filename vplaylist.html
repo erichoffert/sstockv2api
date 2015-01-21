@@ -6,12 +6,15 @@
    <script>
    var videoPlayer;
    var video_count = 1;
+   var video_playlist = ["1.mp4","2.mp4","3.mp4","4.mp4","5.mp4"];
+   
    window.onload = function (){ 
    videoPlayer = document.getElementById("homevideo");
    videoPlayer.addEventListener("ended", function (){
    video_count++;
    if (video_count == 5) video_count = 1;
-   var nextVideo = video_count+".mp4";
+   //var nextVideo = video_count+".mp4";
+   var nextVideo = video_playlist[video_count-1];
    videoPlayer.src = nextVideo;
    }, false);
    }
@@ -21,7 +24,7 @@
 <!-- Code adapted from http://stackoverflow.com/questions/16339181/html5-video-video-playlist -->
 
 <center>
-<video id="homevideo" width="640" height="360" autoplay autobuffer controls src="1.mp4"></video>
+<video id="homevideo" width="640" height="360" autoplay autobuffer controls src="video_playlist[0]"></video>
 </center>
 
 </body>
