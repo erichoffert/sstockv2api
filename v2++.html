@@ -4,9 +4,6 @@
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 
     <script type="text/javascript">
-    
-        var video_playlist = [];
-        var video_item = 0;
         
       // Create image wrapper component
       function createImageComponent(image) {
@@ -16,7 +13,6 @@
         var description = $('<p>');
         var page_url = '"http://www.shutterstock.com/pic.mhtml?id=' + image.id + '"';
         var page_info = '<br><br><a href =' + page_url + '>Download image</a><br>';
-
 
         $(thumbnail).attr('src', image.assets.preview.url);
 
@@ -189,9 +185,6 @@
           return false;
         });
       });
-    
-  
-  }
   
     </script>
 
@@ -328,9 +321,6 @@
         <div id="audio-search-results"></div>
       </div>
     </div>
-
-    <button onclick="myFunction()">Play videos</button>
-   
 
   </body>
 </html>
