@@ -10,7 +10,7 @@
    videoPlayer = document.getElementById("homevideo");
    videoPlayer.addEventListener("ended", function (){
    video_count++;
-   if (video_count == 4) video_count = 1;
+   if (video_count == 5) video_count = 1;
    var nextVideo = video_count+".mp4";
    videoPlayer.src = nextVideo;
    }, false);
