@@ -23,12 +23,8 @@
         videoPlayer.autoplay = 'true';
         videoPlayer.autobuffer = 'true';
         videoPlayer.controls = 'true';
-        
-      $("#video-active").on(
-        "timeupdate", 
-        function(event){
-          onTrackedVideoFrame(this.currentTime, this.duration);
-        });
+        videoPlayer.ontimeupdate = function() {onTrackedVideoFrame()};
+      
     }
     
    window.onload = function (){ 
@@ -41,11 +37,9 @@
        }, false);
    }
    
-    function onTrackedVideoFrame(currentTime, duration){
-        $("#current").text(currentTime);
-        console.log($("#current").text(currentTime));
-        $("#duration").text(duration);
-        console.log($("#duration").text(duration));
+    function onTrackedVideoFrame(){
+       console.log(videoPlayer.duration);
+       console.log(videoPlayer.currentTime);
       }
    
    
