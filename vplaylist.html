@@ -17,8 +17,10 @@
     
     $( document ).ready(function() {
         
-        video_preview_duration = location.search[1];
-        window.alert(video_preview_duration);
+        if (location.search != "") {
+            video_preview_duration = location.search[1];
+            window.alert(video_preview_duration);
+        }
 
         videoPlayer = document.getElementById('homevideo');
         videoPlayer.src = video_playlist[0];
