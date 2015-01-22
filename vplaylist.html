@@ -6,6 +6,7 @@
    <title>HTML5 video playlist</title>
    <script>
    var videoPlayer;
+   var video_preview_duration = 5;
    var video_count = 1;
    var video_playlist = 
    ["http://ak2.picdn.net/shutterstock/videos/4664129/preview/stock-footage-aerial-shot-of-container-ship-in-ocean.mp4",
@@ -40,7 +41,7 @@
     function onTrackedVideoFrame(){
        console.log(videoPlayer.duration);
        console.log(videoPlayer.currentTime);
-           if (videoPlayer.currentTime >= 10) {
+           if (videoPlayer.currentTime >= video_preview_duration) {
                 video_count++;
                 if (video_count == 5) video_count = 0;
                 var nextVideo = video_playlist[video_count];
