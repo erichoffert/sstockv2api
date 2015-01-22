@@ -17,6 +17,8 @@
     
     $( document ).ready(function() {
 
+        window.alert('on ready');
+        
         videoPlayer = document.getElementById('homevideo');
         videoPlayer.src = video_playlist[0];
         videoPlayer.width = '640';
@@ -31,6 +33,9 @@
     });
     
    window.onload = function (){ 
+       
+       window.alert('on load');
+
        videoPlayer = document.getElementById('homevideo');
        videoPlayer.addEventListener("ended", function (){
            video_count++;
