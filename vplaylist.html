@@ -15,34 +15,15 @@
    "http://ak6.picdn.net/shutterstock/videos/4470491/preview/stock-footage-a-young-woman-with-a-slender-figure-is-engaged-in-gymnastics-at-sea-at-sunrise-she-makes-a-run.mp4"]
     
     $( document ).ready(function() {
-        var obj, source;
-        
+       
         window.alert( "document loaded" );
 
-        obj = document.createElement('video');
-        $(obj).attr('id', 'homevideo');
-        $(obj).attr('class', 'video-js vjs-default-skin');
-        $(obj).attr('width', '640');
-        $(obj).attr('height', '360');
-        $(obj).attr('controls', 'true');
-        $(obj).attr('autoplay', 'true');
+        videoPlayer = document.getElementById('homevideo');
+        videoPlayer.src = video_playlist[0];
         
-        window.alert($(obj).attr('id', 'homevideo'));
-
-        source = document.createElement('source');
-        $(source).attr('type', 'video/mp4');
-        $(source).attr('src', 'http://ak2.picdn.net/shutterstock/videos/4664129/preview/stock-footage-aerial-shot-of-container-ship-in-ocean.mp4');
-        
-        $("#videocontent").append(obj);
-        $(obj).append(source);
-
-        window.alert(source);
-
-        document.getElementById('homevideo').play();
-          
+        window.alert(videoPlayer.src);
         window.alert( "video loaded" );
         
-
       });
  
     
