@@ -29,14 +29,6 @@
         function(event){
           onTrackedVideoFrame(this.currentTime, this.duration);
         });
-        
-    function onTrackedVideoFrame(currentTime, duration){
-        $("#current").text(currentTime);
-        console.log($("#current").text(currentTime));
-        $("#duration").text(duration);
-        console.log($("#duration").text(duration));
-      }
- 
     }
     
    window.onload = function (){ 
@@ -48,6 +40,15 @@
            videoPlayer.src = nextVideo;
        }, false);
    }
+   
+    function onTrackedVideoFrame(currentTime, duration){
+        $("#current").text(currentTime);
+        console.log($("#current").text(currentTime));
+        $("#duration").text(duration);
+        console.log($("#duration").text(duration));
+      }
+   
+   
    </script>
   
     
