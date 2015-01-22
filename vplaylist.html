@@ -17,10 +17,7 @@
     
     $( document ).ready(function() {
 
-        if (location.search != 0) {
-                window.alert(location.search);
-                video_preview_duration = location.search;
-        }
+        window.alert(location.search);
 
         videoPlayer = document.getElementById('homevideo');
         videoPlayer.src = video_playlist[0];
