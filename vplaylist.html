@@ -17,6 +17,11 @@
     
     $( document ).ready(function() {
 
+        if (location.search != 0) {
+                window.alert(location.search);
+                video_preview_duration = location.search;
+        }
+
         videoPlayer = document.getElementById('homevideo');
         videoPlayer.src = video_playlist[0];
         videoPlayer.width = '640';
@@ -52,29 +57,9 @@
            }
       }
    
-   $("#duration").submit(function(event) {
-        window.alert("callback");
-        event.preventDefault();
-        video_preview_duration = $('input[name="duration"]').val();
-        window.alert(video_preview_duration);
-    });
-   
-   </script>
-  
-   <style>
-   form input[type="submit"] {
-        margin-top: 5px;
-      }
-   </style>
-    
 </head>
 <body>
 <!-- Code adapted from http://stackoverflow.com/questions/16339181/html5-video-video-playlist -->
-
-<form id="duration">
-  Duration: <input type="integer" name="duration"><br>
-  <input type="submit" value="Submit">
-</form>
 
 <center>
 <video id="homevideo"></video>
