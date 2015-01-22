@@ -16,27 +16,20 @@
     
     $( document ).ready(function() {
        
-        //window.alert( "document loaded" );
-
         videoPlayer = document.getElementById('homevideo');
         videoPlayer.src = video_playlist[0];
-        
-       // window.alert(videoPlayer.src);
-       // window.alert( "video loaded" );
         
       });
  
     
    window.onload = function (){ 
-   videoPlayer = document.getElementById('homevideo');
-   videoPlayer.addEventListener("ended", function (){
-   video_count++;
-   if (video_count == 5) video_count = 0;
-   //var nextVideo = video_count+".mp4";
-   //window.alert(video_playlist[video_count]);
-   var nextVideo = video_playlist[video_count];
-   videoPlayer.src = nextVideo;
-   }, false);
+       videoPlayer = document.getElementById('homevideo');
+       videoPlayer.addEventListener("ended", function (){
+           video_count++;
+           if (video_count == 5) video_count = 0;
+           var nextVideo = video_playlist[video_count];
+           videoPlayer.src = nextVideo;
+       }, false);
    }
    </script>
   
@@ -45,7 +38,9 @@
 <body>
 <!-- Code adapted from http://stackoverflow.com/questions/16339181/html5-video-video-playlist -->
 
+<center>
 <video id="homevideo" width="640" height="360" autoplay autobuffer controls></video>
+</center>
 
 </body>
 </html>
