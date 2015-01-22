@@ -18,6 +18,8 @@
        
         videoPlayer = document.getElementById('homevideo');
         videoPlayer.src = video_playlist[0];
+        videoPlayer.width = '640';
+        videoPlayer.height = '360';
         videoPlayer.autoplay = 'true';
         videoPlayer.autobuffer = 'true';
         videoPlayer.controls = 'true';
@@ -42,7 +44,7 @@
 <!-- Code adapted from http://stackoverflow.com/questions/16339181/html5-video-video-playlist -->
 
 <center>
-<video id="homevideo" width="640" height="360" poster = "http://www.deshineus.com/wp-content/uploads/2013/12/white.gif"></video>
+<video id="homevideo"></video>
 </center>
 
 </body>
