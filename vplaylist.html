@@ -18,6 +18,9 @@
        
         videoPlayer = document.getElementById('homevideo');
         videoPlayer.src = video_playlist[0];
+        videoPlayer.autoplay = 'true';
+        videoPlayer.autobuffer = 'true';
+        videoPlayer.controls = 'true';
         
       });
  
@@ -39,7 +42,7 @@
 <!-- Code adapted from http://stackoverflow.com/questions/16339181/html5-video-video-playlist -->
 
 <center>
-<video id="homevideo" width="640" height="360" autoplay autobuffer controls></video>
+<video id="homevideo" width="640" height="360"></video>
 </center>
 
 </body>
