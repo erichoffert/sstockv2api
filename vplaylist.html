@@ -17,7 +17,8 @@
     $( document ).ready(function() {
        
         videoPlayer = document.getElementById('homevideo');
-        videoPlayer.src = video_playlist[0]+'#t0,10';
+        videoPlayer.src = video_playlist[0];
+        window.alert(video_playlist[0]+"#t0,10");
         videoPlayer.width = '640';
         videoPlayer.height = '360';
         videoPlayer.autoplay = 'true';
