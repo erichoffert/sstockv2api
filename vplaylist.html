@@ -53,8 +53,9 @@
       }
    
    $("#duration").submit(function(event) {
-        //event.preventDefault();
-        video_preview_duration = $(this).find('input[type="number"]').val();
+        window.alert("callback");
+        event.preventDefault();
+        video_preview_duration = $('input[name="duration"]').val();
         window.alert(video_preview_duration);
     });
    
