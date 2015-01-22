@@ -16,19 +16,22 @@
    "http://ak6.picdn.net/shutterstock/videos/4470491/preview/stock-footage-a-young-woman-with-a-slender-figure-is-engaged-in-gymnastics-at-sea-at-sunrise-she-makes-a-run.mp4"]
     
     $( document ).ready(function() {
-        var video_clip = $("input[name=duration]".val);
-       
-        window.alert(video_clip); 
-       
+        var duration = $('input[name=duration]').val();
+        
+         window.alert(duration);
+
         videoPlayer = document.getElementById('homevideo');
         videoPlayer.src = video_playlist[0];
         videoPlayer.width = '640';
         videoPlayer.height = '360';
-        videoPlayer.autoplay = 'true';
         videoPlayer.autobuffer = 'true';
         videoPlayer.controls = 'true';
         videoPlayer.muted = 'true';
         videoPlayer.ontimeupdate = function() {onTrackedVideoFrame()};
+        
+        if (duration != 0)
+            videoPlayer.autoplay = 'true';
+
       
     });
     
@@ -57,21 +60,20 @@
    
    </script>
   
+   <style>
+   form input[type="submit"] {
+        margin-top: 5px;
+      }
+   </style>
     
 </head>
 <body>
 <!-- Code adapted from http://stackoverflow.com/questions/16339181/html5-video-video-playlist -->
 
- <form id="input-duration">
-      <fieldset>
-        <div>
-          <label for="duration">Per Page:</label>
-          <input name="duration" type="number" min="1" value="10"></input>
-        </div>
-        
-        <input name="submit" type="submit" value="Submit"></input>
-      </fieldset>
-    </form>
+<form id="duration">
+  Duration: <input type="integer" name="duration"><br>
+  <input type="submit" value="Submit">
+</form>
 
 <center>
 <video id="homevideo"></video>
