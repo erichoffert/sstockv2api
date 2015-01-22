@@ -17,7 +17,6 @@
     
     $( document ).ready(function() {
        
-       console.log($("input[name=duration]".val)); 
         videoPlayer = document.getElementById('homevideo');
         videoPlayer.src = video_playlist[0];
         videoPlayer.width = '640';
@@ -59,9 +58,6 @@
 </head>
 <body>
 <!-- Code adapted from http://stackoverflow.com/questions/16339181/html5-video-video-playlist -->
-
-<label for="video_clip_length">Video duration:</label>
-<input type="number" name="duration" id="video_clip_length" min = "1" max = "10" value="">
 
 <center>
 <video id="homevideo"></video>
