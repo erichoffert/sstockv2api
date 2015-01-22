@@ -17,8 +17,7 @@
     $( document ).ready(function() {
        
         videoPlayer = document.getElementById('homevideo');
-        videoPlayer.src = video_playlist[0];
-        window.alert(video_playlist[0]+"#t0,10");
+        videoPlayer.src = video_playlist[0]+"#t=0,10";
         videoPlayer.width = '640';
         videoPlayer.height = '360';
         videoPlayer.autoplay = 'true';
@@ -33,7 +32,7 @@
        videoPlayer.addEventListener("ended", function (){
            video_count++;
            if (video_count == 5) video_count = 0;
-           var nextVideo = video_playlist[video_count]+'#t0,10';
+           var nextVideo = video_playlist[video_count]+"#t=0,10";
            videoPlayer.src = nextVideo;
        }, false);
    }
