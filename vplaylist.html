@@ -36,8 +36,8 @@
    window.onload = function (){ 
        
         var time_interval = 'Each video plays for time = ' + video_preview_duration + ' seconds';
-        window.alert(document.getElementsByClassName('overlay')[0].textContent);
-        document.getElementsByClassName('overlay')[0].textContent=time_interval;
+        //window.alert(document.getElementsByClassName('overlay')[0].textContent);
+       //document.getElementsByClassName('overlay')[0].textContent=time_interval;
         
        videoPlayer = document.getElementById('homevideo');
        videoPlayer.addEventListener("ended", function (){
@@ -65,7 +65,7 @@
     window.onclick = clickAction;
     
     function clickAction() {
-        window.alert("clicked");
+        window.alert(time_interval);
     }
 
    
@@ -93,8 +93,8 @@
     /*****************************/
     
     .overlay {
-      width: 400px;
-      height: 400px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
       -webkit-border-radius: 50%;
       -moz-border-radius: 50%;
@@ -102,7 +102,7 @@
       display: block;
       position: absolute;
       top: 10%;
-      left: 50%;
+      left: 70%;
     }
     
     .overlay h1 {
@@ -144,7 +144,7 @@
   
   <div class="overlay">
     <h1>Video Search Playlist</h1>
-    <p>Quick playback of search results</p>
+    <p>Set clip length dynamically</p>
   </div>
     
 </head>
