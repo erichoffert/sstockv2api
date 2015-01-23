@@ -23,7 +23,7 @@
             
         var time_interval = 'Each video plays for time = ' + video_preview_duration + ' seconds';
         window.alert(time_interval);
-        document.getElementsByClassName('overlay_text').innerHTML=time_interval;
+        document.getElementsByClassName('overlay_text')[0].innerHTML=time_interval;
 
         videoPlayer = document.getElementById('homevideo');
         videoPlayer.src = video_playlist[0];
