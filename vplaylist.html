@@ -14,7 +14,10 @@
    "http://ak8.picdn.net/shutterstock/videos/3711827/preview/stock-footage-high-quality-looping-animation-of-ocean-waves-from-underwater-with-floating-plankton-light-rays.mp4",
    "http://ak2.picdn.net/shutterstock/videos/4147426/preview/stock-footage-surfer-on-blue-ocean-wave-getting-barreled.mp4",
    "http://ak3.picdn.net/shutterstock/videos/5889806/preview/stock-footage-rough-sea-loop-3d-a-loop-of-big-waves-in-an-agitated-ocean-camera-goes-underwater-several-times-4k.mp4",
-   "http://ak6.picdn.net/shutterstock/videos/4470491/preview/stock-footage-a-young-woman-with-a-slender-figure-is-engaged-in-gymnastics-at-sea-at-sunrise-she-makes-a-run.mp4"]
+   "http://ak6.picdn.net/shutterstock/videos/4470491/preview/stock-footage-a-young-woman-with-a-slender-figure-is-engaged-in-gymnastics-at-sea-at-sunrise-she-makes-a-run.mp4",
+   "http://ak3.picdn.net/shutterstock/videos/2474963/preview/stock-footage-ocean-fly-over-hd-high-speed-animation-just-above-the-ocean-waves-facing-the-sun.mp4",
+   "http://ak7.picdn.net/shutterstock/videos/5584481/preview/stock-footage-ocean-waves-storm-sea-spray.mp4"]
+    
     
     $( document ).ready(function() {
         
@@ -42,7 +45,7 @@
        videoPlayer = document.getElementById('homevideo');
        videoPlayer.addEventListener("ended", function (){
            video_count++;
-           if (video_count == 5) video_count = 0;
+           if (video_count == 7) video_count = 0;
            var nextVideo = video_playlist[video_count];
            videoPlayer.src = nextVideo;
        }, false);
