@@ -37,7 +37,7 @@
        
         var time_interval = 'Each video plays for time = ' + video_preview_duration + ' seconds';
         window.alert(time_interval);
-        document.getElementsByClassName('overlay_text')[0].innerHTML=time_interval;
+        document.getElementsByClassName('overlay')[2].innerHTML=time_interval;
         
        videoPlayer = document.getElementById('homevideo');
        videoPlayer.addEventListener("ended", function (){
@@ -144,7 +144,7 @@
   
   <div class="overlay">
     <h1>Video Search Playlist</h1>
-    <span class="overlay_text">Quick playback of search results</span>
+    <p>Quick playback of search results</p>
   </div>
     
 </head>
