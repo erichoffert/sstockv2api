@@ -20,10 +20,6 @@
         
         if (location.search != "") 
             video_preview_duration = location.search[1];
-            
-        var time_interval = 'Each video plays for time = ' + video_preview_duration + ' seconds';
-        window.alert(time_interval);
-        document.getElementsByClassName('overlay_text')[0].innerHTML=time_interval;
 
         videoPlayer = document.getElementById('homevideo');
         videoPlayer.src = video_playlist[0];
@@ -38,6 +34,11 @@
     });
     
    window.onload = function (){ 
+       
+        var time_interval = 'Each video plays for time = ' + video_preview_duration + ' seconds';
+        window.alert(time_interval);
+        document.getElementsByClassName('overlay_text')[0].innerHTML=time_interval;
+        
        videoPlayer = document.getElementById('homevideo');
        videoPlayer.addEventListener("ended", function (){
            video_count++;
