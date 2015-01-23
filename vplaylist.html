@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
-    <head>
+<head>
     
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
    <meta charset="utf-8" />
-   <title>HTML5 video playlist</title>
+   <title>HTML5 video search playlist</title>
    <script>
    var videoPlayer;
    var video_preview_duration = -1;
@@ -21,8 +21,16 @@
     
     $( document ).ready(function() {
         
+        // When the document is ready (page starts loading), execute this function
+        
+        // Support the ability to specify a video clip duration in the URL query string and parse it into location.search
+        // location.search[1] contains the duration as an integer in seconds, format is URI?n where n = seconds
+
         if (location.search != "") 
             video_preview_duration = location.search[1];
+            
+        // Initialize the videoPlayer attributes for the <video> tag
+        // Attach the "ontimeupdate" event listener which is called multiple times a second 
 
         videoPlayer = document.getElementById('homevideo');
         videoPlayer.src = video_playlist[0];
@@ -38,10 +46,17 @@
     
    window.onload = function (){ 
        
+       // When the document is completely loaded, execute this function
+       // This function can be used for a "full video playback" scenario only
+
         var time_interval = 'Each video plays for time = ' + video_preview_duration + ' seconds';
+        
         //window.alert(document.getElementsByClassName('overlay')[0].textContent);
        //document.getElementsByClassName('overlay')[0].textContent=time_interval;
-        
+       
+       // In this function, a callback is triggered to advance to the next video when the current video completes
+       // This is the default behavior without a query string specified
+
        videoPlayer = document.getElementById('homevideo');
        videoPlayer.addEventListener("ended", function (){
            video_count++;
@@ -52,15 +67,28 @@
    }
    
     function onTrackedVideoFrame(){
+        
+       // Every 15 to 250ms, or whenever the media controller position changes, whichever happens least often
+       // The user agent queues a task to fire a simple event named timeupdate at the MediaController.
+       // Current time is printed to the developer console when each event is fired along with full duration of the video
+
        console.log(videoPlayer.duration);
        console.log(videoPlayer.currentTime);
+       
+       // If no video_preview_duration is set, then the entire duration of each video is used for playback
+       
            if (video_preview_duration < 0)
                 video_preview_duration = videoPlayer.duration;
+                
+       // In this function, the current time is compared to the target video_preview_duration
+       // If the video_preview_duration threshold is met then the video player advances to the next video in the playlist
+                
            if (videoPlayer.currentTime >= video_preview_duration) {
                 video_count++;
                 if (video_count == 7) video_count = 0;
                 var nextVideo = video_playlist[video_count];
                 videoPlayer.src = nextVideo;
+                
                 console.log("skip to next video");
            }
       }
@@ -145,6 +173,8 @@
      }
 </style>
   
+  <!-- An HTML5 transparent text overlay is rendered on top of the video -->
+  
   <div class="overlay">
     <h1>Video Search Playlist</h1>
     <p>Set clip length dynamically</p>
@@ -152,6 +182,7 @@
     
 </head>
 <body>
+
 <!-- Code adapted from http://stackoverflow.com/questions/16339181/html5-video-video-playlist -->
 
 <center>
