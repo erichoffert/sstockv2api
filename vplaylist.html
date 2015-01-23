@@ -22,6 +22,8 @@
             video_preview_duration = location.search[1];
             
         var time_interval = 'Play video search results as a playlist with time interval =' + video_preview_duration;
+        window.alert(time_interval);
+        document.getElementById('overlay_text').innerHTML=time_interval;
 
         videoPlayer = document.getElementById('homevideo');
         videoPlayer.src = video_playlist[0];
@@ -65,8 +67,7 @@
         window.alert("clicked");
     }
 
-   window.alert(time_interval);
-   document.getElementById('overlay_text').innerHTML=time_interval;
+   
 
    </script>
    
