@@ -21,9 +21,9 @@
         if (location.search != "") 
             video_preview_duration = location.search[1];
             
-        var time_interval = 'Each video plays for time =' + video_preview_duration + 'seconds';
+        var time_interval = 'Each video plays for time = ' + video_preview_duration + ' seconds';
         window.alert(time_interval);
-        document.getElementById('overlay').innerHTML=time_interval;
+        document.getElementById('overlay_text').innerHTML=time_interval;
 
         videoPlayer = document.getElementById('homevideo');
         videoPlayer.src = video_playlist[0];
@@ -143,7 +143,7 @@
   
   <div class="overlay">
     <h1>Video Search Playlist</h1>
-    <p></p>
+    <div id = "overlay_text"><p></p></div>
   </div>
     
 </head>
