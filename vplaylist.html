@@ -21,7 +21,7 @@
         if (location.search != "") 
             video_preview_duration = location.search[1];
             
-        var time_interval = 'Play video search results as a playlist with time interval =' + video_preview_duration;
+        var time_interval = 'Each video plays for time =' + video_preview_duration + 'seconds';
         window.alert(time_interval);
         document.getElementById('overlay_text').innerHTML=time_interval;
 
@@ -122,6 +122,15 @@
     
     .overlay a {
       color: #fff;
+    }
+    
+    .overlay_text a {
+      text-align: center;
+      width: 80%;
+      margin: 0 auto;
+      color: #fff;
+      font-family: inherit;
+      margin-bottom: 20px;
     }
     
     .orange {
