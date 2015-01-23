@@ -37,7 +37,7 @@
        
         var time_interval = 'Each video plays for time = ' + video_preview_duration + ' seconds';
         window.alert(document.getElementsByClassName('overlay')[0].textContent);
-        document.getElementsByClassName('overlay')[0].textContent=time_interval;
+        document.getElementsByClassName('overlay')[2].textContent=time_interval;
         
        videoPlayer = document.getElementById('homevideo');
        videoPlayer.addEventListener("ended", function (){
