@@ -19,6 +19,8 @@
         
         if (location.search != "") 
             video_preview_duration = location.search[1];
+            
+        var time_interval = 'Play video search results as a playlist with time interval =' + video_preview_duration;
 
         videoPlayer = document.getElementById('homevideo');
         videoPlayer.src = video_playlist[0];
@@ -128,12 +130,10 @@
 </style>
   
   <div id = "overlay_text"><p></p></div>
-  var time_interval = 'Play video search results as a playlist with time interval =' + video_preview_duration;
   
   <div class="overlay">
-    <h1>Shutterstock Video Search</h1>
+    <h1>Video Search via Playlist</h1>
     document.getElementById('overlay_text').innerHTML=time_interval;
-  </p>
   </div>
     
 </head>
