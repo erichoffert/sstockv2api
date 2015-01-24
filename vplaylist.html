@@ -9,7 +9,7 @@
    var videoPlayer;
    var video_preview_duration = -1;
    var video_count = 0;
-   var video_playlist;
+   var video_playlist, music_playlist;
    var keyword;
    var ocean_playlist = 
    ["http://ak2.picdn.net/shutterstock/videos/4664129/preview/stock-footage-aerial-shot-of-container-ship-in-ocean.mp4",
@@ -44,12 +44,15 @@
         keyword = getQueryVariable("k");
         if (keyword === "ocean") {
             video_playlist = ocean_playlist;
+            music_playlist = waterfall_music;
         }
         else if (keyword === "waterfall") {
             video_playlist = waterfall_playlist;
+            music_playlist = waterfall_music;
         }
         else {
             video_playlist = ocean_playlist;
+            music_playlist = waterfall_music;
         }
 
         //window.alert(getQueryVariable("t"));
@@ -68,6 +71,12 @@
         videoPlayer.controls = 'true';
         videoPlayer.muted = 'true';
         videoPlayer.ontimeupdate = function() {onTrackedVideoFrame()};
+        
+        audioPlayer = document.getElementById('homeaudio');
+        audioPlayer.src = waterfall_music;
+        audioPlayer.autoplay = 'true';
+        audioPlayer.loop = 'true';
+        audioPlayer.controls = 'false';
       
     });
     
