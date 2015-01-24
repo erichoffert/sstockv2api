@@ -41,12 +41,15 @@
         
         video_preview_duration = getQueryVariable("t");
         keyword = getQueryVariable("k");
-        if (keyword === "ocean")
+        if (keyword === "ocean") {
             video_playlist = ocean_playlist;
-        elif (keyword === "waterfall")
+        }
+        else if (keyword === "waterfall") {
             video_playlist = waterfall_playlist;
-        else
+        }
+        else {
             video_playlist = ocean_playlist;
+        }
 
         window.alert(getQueryVariable("t"));
         window.alert(getQueryVariable("k"));
