@@ -7,7 +7,8 @@
    <title>HTML5 video search playlist</title>
    <script>
    var videoPlayer;
-   var video_preview_duration = -1;
+   //var video_preview_duration = -1;
+   var video_preview_duration = 2;
    var video_count = 0;
    var video_playlist = 
    ["http://ak2.picdn.net/shutterstock/videos/4664129/preview/stock-footage-aerial-shot-of-container-ship-in-ocean.mp4",
@@ -26,9 +27,13 @@
         // Support the ability to specify a video clip duration in the URL query string and parse it into location.search
         // location.search[1] contains the duration as an integer in seconds, format is URI?n where n = seconds
 
-        if (location.search != "") 
-            video_preview_duration = location.search[1];
-            
+       // if (location.search != "") 
+        //    video_preview_duration = location.search[1];
+        
+        window.alert(getQueryVariable("t"));
+        window.alert(getQueryVariable("k"));
+        window.alert(getQueryVariable("m"));
+
         // Initialize the videoPlayer attributes for the <video> tag
         // Attach the "ontimeupdate" event listener which is called multiple times a second 
 
@@ -92,6 +97,18 @@
                 console.log("skip to next video");
            }
       }
+      
+    function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+        }
+    }
+    console.log('Query variable %s not found', variable);
+}
       
     window.onclick = clickAction;
     
