@@ -20,13 +20,13 @@
    "http://ak3.picdn.net/shutterstock/videos/2474963/preview/stock-footage-ocean-fly-over-hd-high-speed-animation-just-above-the-ocean-waves-facing-the-sun.mp4",
    "http://ak7.picdn.net/shutterstock/videos/5584481/preview/stock-footage-ocean-waves-storm-sea-spray.mp4"]
    var waterfall_playlist = 
-   ["http://ak2.picdn.net/shutterstock/videos/4664129/preview/stock-footage-aerial-shot-of-container-ship-in-ocean.mp4",
-   "http://ak8.picdn.net/shutterstock/videos/3711827/preview/stock-footage-high-quality-looping-animation-of-ocean-waves-from-underwater-with-floating-plankton-light-rays.mp4",
-   "http://ak2.picdn.net/shutterstock/videos/4147426/preview/stock-footage-surfer-on-blue-ocean-wave-getting-barreled.mp4",
-   "http://ak3.picdn.net/shutterstock/videos/5889806/preview/stock-footage-rough-sea-loop-3d-a-loop-of-big-waves-in-an-agitated-ocean-camera-goes-underwater-several-times-4k.mp4",
-   "http://ak6.picdn.net/shutterstock/videos/4470491/preview/stock-footage-a-young-woman-with-a-slender-figure-is-engaged-in-gymnastics-at-sea-at-sunrise-she-makes-a-run.mp4",
-   "http://ak3.picdn.net/shutterstock/videos/2474963/preview/stock-footage-ocean-fly-over-hd-high-speed-animation-just-above-the-ocean-waves-facing-the-sun.mp4",
-   "http://ak7.picdn.net/shutterstock/videos/5584481/preview/stock-footage-ocean-waves-storm-sea-spray.mp4"]
+   ["http://ak9.picdn.net/shutterstock/videos/5882156/preview/stock-footage-extremely-high-pov-cliff-jump-into-water-above-a-waterfall-trees-and-rocks-below-on-a-beautiful.mp4",
+   "http://ak4.picdn.net/shutterstock/videos/2208901/preview/stock-footage-close-approach-to-waterfall-by-boat-milford-sound-fjord-south-island-new-zealand.mp4",
+   "http://ak9.picdn.net/shutterstock/videos/4080727/preview/stock-footage-waterfalls-fps-lm-slow-motion-x.mp4",
+   "http://ak8.picdn.net/shutterstock/videos/3363962/preview/stock-footage-a-river-flows-over-rocks-in-this-beautiful-scene-in-the-tennessee-mountains-in-autumn.mp4",
+   "http://ak1.picdn.net/shutterstock/videos/5463350/preview/stock-footage-waterfall-river-paradise-rapids-a-scenic-view-over-a-large-waterfall-rapids-rush-over-the-edge-of.mp4",
+   "http://ak3.picdn.net/shutterstock/videos/5462669/preview/stock-footage-waterfall-river-paradise-trees-a-sweeping-view-over-a-large-waterfall-rapids-rush-over-the-edge.mp4",
+   "http://ak0.picdn.net/shutterstock/videos/2693297/preview/stock-footage-mountain-stream-in-the-forest.mp4"]
     
     
     $( document ).ready(function() {
@@ -43,7 +43,11 @@
         keyword = getQueryVariable("k");
         if (keyword === "ocean")
             video_playlist = ocean_playlist;
-        
+        elif (keyword === "waterfall")
+            video_playlist = waterfall_playlist;
+        else
+            video_playlist = ocean_playlist;
+
         window.alert(getQueryVariable("t"));
         window.alert(getQueryVariable("k"));
         window.alert(getQueryVariable("m"));
