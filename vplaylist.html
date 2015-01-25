@@ -79,7 +79,8 @@
             
         window.alert(music_playback);
         
-        if (music_playback) {
+        if (music_playback > 0) {
+            window.alert("set music track");
             audioPlayer = document.getElementById('homeaudio');
             audioPlayer.src = music_playlist;
             audioPlayer.autoplay = 'true';
