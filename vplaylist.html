@@ -8,6 +8,7 @@
    <script>
    var videoPlayer;
    var video_preview_duration = -1;
+   var music_playback = -1;
    var video_count = 0;
    var video_playlist, music_playlist;
    var keyword;
@@ -72,9 +73,14 @@
         videoPlayer.muted = 'true';
         videoPlayer.ontimeupdate = function() {onTrackedVideoFrame()};
         
-        if (getQueryVariable("m") != "") {
+        if (getQueryVariable("m") > 0) {
+            music_playback = getQueryVariable("m");
+            
+        window.alert(music_playback);
+        
+        if (music_playback) {
             audioPlayer = document.getElementById('homeaudio');
-            audioPlayer.src = waterfall_music;
+            audioPlayer.src = music_playlist;
             audioPlayer.autoplay = 'true';
             audioPlayer.loop = 'true';
         }
