@@ -28,8 +28,20 @@
    "http://ak1.picdn.net/shutterstock/videos/5463350/preview/stock-footage-waterfall-river-paradise-rapids-a-scenic-view-over-a-large-waterfall-rapids-rush-over-the-edge-of.mp4",
    "http://ak3.picdn.net/shutterstock/videos/5462669/preview/stock-footage-waterfall-river-paradise-trees-a-sweeping-view-over-a-large-waterfall-rapids-rush-over-the-edge.mp4",
    "http://ak0.picdn.net/shutterstock/videos/2693297/preview/stock-footage-mountain-stream-in-the-forest.mp4"]
+   var rocket_playlist = 
+   ["http://ak8.picdn.net/shutterstock/videos/5761580/preview/stock-footage-rocket-takeoff.mp4",
+   "http://ak2.picdn.net/shutterstock/videos/3399314/preview/stock-footage-beautiful-flight-through-space-to-the-earth-hd.mp4",
+   "http://ak7.picdn.net/shutterstock/videos/3757637/preview/stock-footage-rocket-launch.mp4",
+   "http://ak4.picdn.net/shutterstock/videos/3936710/preview/stock-footage--s-apollo-lifts-off-from-the-launchpad.mp4",
+   "http://ak8.picdn.net/shutterstock/videos/6068675/preview/stock-footage-space-station-and-space-shuttle-orbiting-earth-d-animation.mp4",
+   "http://ak5.picdn.net/shutterstock/videos/5277893/preview/stock-footage-an-astronaut-stationed-at-the-international-space-station-goes-on-a-spacewalk.mp4",
+   "http://ak1.picdn.net/shutterstock/videos/5746967/preview/stock-footage-nuclear-atomic-testing-in-the-pacific-old-film-style-perfect-for-videos-about-nuclear-testing.mp4",
+   "http://ak6.picdn.net/shutterstock/videos/7118395/preview/stock-footage-space-shuttle-launch-d-animation.mp4",
+   "http://ak7.picdn.net/shutterstock/videos/6389657/preview/stock-footage-carrier-rocket-takes-off-d-animation.mp4",
+   "http://ak1.picdn.net/shutterstock/videos/2334638/preview/stock-footage-military-drone-uav-flying-over-desert-and-actively-seeking-enemy-targets.mp4"]
    var waterfall_music = "http://picdn.net/shutterstock/audio/146192/preview/fairytale_love.mp3";
-   var ocean_music = "http://picdn.net/shutterstock/audio/27449/preview/come_on_gotta_surf.mp3"
+   var ocean_music = "http://picdn.net/shutterstock/audio/27449/preview/come_on_gotta_surf.mp3";
+   var rocket_music = "http://picdn.net/shutterstock/audio/200786/preview/live_from_space.mp3";
     
     
     $( document ).ready(function() {
@@ -51,6 +63,10 @@
         else if (keyword === "waterfall") {
             video_playlist = waterfall_playlist;
             music_playlist = waterfall_music;
+        }
+        else if (keyword === "rocket") {
+            video_playlist = rocket_playlist;
+            music_playlist = rocket_music;
         }
         else {
             video_playlist = ocean_playlist;
