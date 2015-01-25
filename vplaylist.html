@@ -72,10 +72,12 @@
         videoPlayer.muted = 'true';
         videoPlayer.ontimeupdate = function() {onTrackedVideoFrame()};
         
-        audioPlayer = document.getElementById('homeaudio');
-        audioPlayer.src = waterfall_music;
-        audioPlayer.autoplay = 'true';
-        audioPlayer.loop = 'true';
+        if (getQueryVariable("m") != "") {
+            audioPlayer = document.getElementById('homeaudio');
+            audioPlayer.src = waterfall_music;
+            audioPlayer.autoplay = 'true';
+            audioPlayer.loop = 'true';
+        }
 
     });
     
