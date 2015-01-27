@@ -99,6 +99,9 @@
         if (getQueryVariable("m") > 0) {
             music_playback = getQueryVariable("m");
         }
+        
+        if (music_playback > 0) console.log("music playback");
+        console.log(music_playback);
             
         if (music_playback > 0) {
             audioPlayer = document.getElementById('homeaudio');
