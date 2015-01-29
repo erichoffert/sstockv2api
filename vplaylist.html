@@ -88,9 +88,6 @@
         // Search for video that matches 'keyword' and populate the video_playlist[] array with results
         
         search(opts, 'video');
-        while (media_search_in_progress) {
-            ;
-        }
         
         console.log('completed search, first video =');
         console.log(video_playlist[0]);
