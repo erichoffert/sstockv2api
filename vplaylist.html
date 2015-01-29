@@ -10,6 +10,7 @@
    var video_preview_duration = -1;
    var music_playback = -1;
    var video_count = 0;
+   var video_item = 0;
    var video_playlist, music_playlist;
    var keyword;
    var ocean_playlist = 
@@ -206,6 +207,7 @@
         .done(function(data) {
             if (data.total_count === 0) {
             //window.alert(“no search results”);
+            alert('no search results');
             return;
             }
             $.each(data.data, function(i, item) {
