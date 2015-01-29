@@ -235,9 +235,12 @@
                 video_count++;
                 if (video_count == per_page) video_count = 0;
                 var nextVideo = video_playlist[video_count];
+                videoPlayer.pause();
                 videoPlayer.src = nextVideo;
+                videoPlayer.load();
+                videoPlayer.play();
                 
-                console.log("skip to next video");
+                console.log("skipped to next video");
                 console.log(videoPlayer.src); 
            }
       }
@@ -277,7 +280,7 @@
 <!-- Code adapted from http://stackoverflow.com/questions/16339181/html5-video-video-playlist -->
 
 <center>
-<video id="homevideo" width = "640" height = "360"></video>
+<video id="homevideo" width = '640' height = '360' controls = 'true'></video>
 <audio id="homeaudio"></audio>
 </center>
 
