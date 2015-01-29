@@ -30,7 +30,8 @@
         //    video_preview_duration = location.search[1];
         
         video_preview_duration = getQueryVariable("t");
-        
+        keyword = getQueryVariable("k");
+
         var opts = "query=" + keyword + "&page=1&per_page=" + per_page + "&safe=true";
   
         console.log(opts);
