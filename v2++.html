@@ -176,6 +176,8 @@
           // Serialize form options
           var opts = $("input[value != '']", this).serialize();
           
+          console.log(opts);
+          
           // Search and display images
           search(opts, 'image');
 
