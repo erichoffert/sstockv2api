@@ -90,17 +90,18 @@
         search(opts, 'video');
         
         console.log('called search function, waiting for results');
-        console.log(media_search_in_progress);
-        console.log(media_search_in_progress === true);
-        while (media_search_in_progress === true) {
-            console.log(media_search_in_progress);
-        }
-        console.log(media_search_in_progress === true);
-        console.log('completed search, first video =');
-        console.log(video_playlist[0]);
-
+        
+        
+    });
+    
+    function initialize_players() {
+    
         // Initialize the videoPlayer attributes for the <video> tag
         // Attach the "ontimeupdate" event listener which is called multiple times a second 
+        
+        console.log('initialize video and audio players');
+        console.log('completed search, first video =');
+        console.log(video_playlist[0]);
 
         videoPlayer = document.getElementById('homevideo');
         videoPlayer.src = video_playlist[0];
@@ -125,8 +126,7 @@
             audioPlayer.autoplay = 'true';
             audioPlayer.loop = 'true';
         }
-
-    });
+   }
     
    window.onload = function (){ 
        
@@ -229,6 +229,7 @@
             media_search_in_progress = false;
             console.log('media search completed');
             console.log(media_search_in_progress);
+            initialize_players();
 
         })
         .fail(function(xhr, status, err) {
