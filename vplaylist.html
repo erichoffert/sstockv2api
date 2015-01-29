@@ -49,7 +49,6 @@
    var ocean_music = "http://picdn.net/shutterstock/audio/27449/preview/come_on_gotta_surf.mp3";
    var rocket_music = "http://picdn.net/shutterstock/audio/200786/preview/live_from_space.mp3";
     
-    
     $( document ).ready(function() {
         
         // When the document is ready (page starts loading), execute this function
@@ -57,31 +56,40 @@
         // Support the ability to specify a video clip duration in the URL query string and parse it into location.search
         // location.search[1] contains the duration as an integer in seconds, format is URI?n where n = seconds
 
-       // if (location.search != "") 
+        // if (location.search != "") 
         //    video_preview_duration = location.search[1];
+        
+        var opt1, opt2, opt3, opts = '';
         
         video_preview_duration = getQueryVariable("t");
         keyword = getQueryVariable("k");
         if (keyword === "ocean") {
-            video_playlist = ocean_playlist;
+            //video_playlist = ocean_playlist;
             music_playlist = ocean_music;
         }
         else if (keyword === "waterfall") {
-            video_playlist = waterfall_playlist;
+            //video_playlist = waterfall_playlist;
             music_playlist = waterfall_music;
         }
         else if (keyword === "rocket") {
-            video_playlist = rocket_playlist;
+            //video_playlist = rocket_playlist;
             music_playlist = rocket_music;
         }
         else {
-            video_playlist = ocean_playlist;
+            //video_playlist = ocean_playlist;
             music_playlist = ocean_music;
         }
+        
+        opt1 = 'client_id=2f710067f5b04f443fea&client_secret=5db3d2861d48d9ffe4c7134944823900eff34560&query=‘;
+        opt2 = keyword;
+        opt3 = '&page=1&per_page=10&safe=true’;
+        opts = opt1 + opt2 + opt3;
 
-        //window.alert(getQueryVariable("t"));
-        //window.alert(getQueryVariable("k"));
-       // window.alert(getQueryVariable("m"));
+        console.log(opts);
+        
+        // Search for video that matches 'keyword' and populate the video_playlist[] array with results
+        
+        search(opts, 'video');
 
         // Initialize the videoPlayer attributes for the <video> tag
         // Attach the "ontimeupdate" event listener which is called multiple times a second 
@@ -134,6 +142,90 @@
        }, false);
    }
    
+   function createVideoComponent(video) {
+       
+       //   createVideoComponent(video) sets the video stream file for each video item in the video search
+       //   the video stream url is added to the video_playlist[] array which is accessed when the document is ready
+       
+        var video_preview = 'large';
+     
+        if (video_preview === 'small') {
+          video_preview_url = video.assets.thumb_mp4.url;
+        }
+        else if (video_preview === 'large') {
+          video_preview_url = video.assets.preview_mp4.url;
+        }
+        
+        video_playlist[video_item] = video_preview_url;
+        
+	    console.log(“Added video playlist item”);
+        console.log(video_playlist[video_item]);
+        
+        video_item++;
+        
+      }
+      
+    function createAudioComponent(audio) {
+
+    }
+     
+    function createImageComponent(image) {
+
+    }
+      
+    function search(opts, media_type) {
+        
+        //  search(opts,media_type) uses Ajax to make an https call to retrieve media search results
+        
+        var clientId = ‘2f710067f5b04f443fea';
+        var clientsecret = ‘5db3d2861d48d9ffe4c7134944823900eff34560';
+        
+        var createComponentFunc;
+        
+        if (media_type === 'image') {
+            createComponentFunc = createImageComponent;
+        }
+        else if (media_type === 'video') {
+            createComponentFunc = createVideoComponent;
+        }
+        else
+            createComponentFunc = createAudioComponent;
+            
+        //  set the media_url for search
+        
+        var media_url;
+        if (media_type === 'image')
+            media_url = 'https://api.shutterstock.com/v2/' + media_type + 's/search';
+        else if (media_type === 'video')
+            media_url = 'https://api.shutterstock.com/v2/' + media_type + 's/search';
+        else
+            media_url = 'https://api.shutterstock.com/v2/' + media_type + '/search';
+        
+        var jqxhr = $.ajax({
+            url: media_url,
+            data: opts,
+            headers: {
+            // Base 64 encode 'client_id:client_secret', use Client ID and Client Secret for the Authorization header
+            Authorization: 'Basic ' + window.btoa(clientId + ':' + clientSecret)
+            }
+        })
+        .done(function(data) {
+            if (data.total_count === 0) {
+            window.alert(“no search results”);
+            return;
+            }
+            $.each(data.data, function(i, item) {
+            var component = createComponentFunc(item);
+            });
+        })
+        .fail(function(xhr, status, err) {
+            alert('Failed to retrieve ' + media_type + ' search results:\n' + JSON.stringify(xhr.responseJSON, null, 2));
+        });
+        
+        return jqxhr;
+    }
+
+      
     function onTrackedVideoFrame(){
         
        // Every 15 to 250ms, or whenever the media controller position changes, whichever happens least often
