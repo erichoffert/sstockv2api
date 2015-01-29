@@ -8,21 +8,13 @@
    <title>HTML5 video canvas playlist</title> 
    <script>
 
-        var canvas = document.getElementById("viewport");
-        var video_preview_duration = 2;
-        var ctx = canvas.getContext('2d'),
-        w = canvas.width,
-        h = canvas.height,
-        video1 = document.createElement('video'),
-        video2 = document.createElement('video'),
-        isVideo1 = false,
-        list = [],
-        current = 0,
+        video1 = document.createElement('video');
+        video2 = document.createElement('video');
+        isVideo1 = false;
+        list = [];
+        current = 0;
         isPlaying = false;
-        wm = document.createElement('canvas'),
-        wctx = wm.getContext('2d'),
-        wtxt = 'video search results demo';
-    
+       
     window.requestAnimationFrame = (function(){
       return  window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame    ||
               function( callback ){
@@ -31,6 +23,15 @@
     })();
     
     $( document ).ready(function() {
+        
+        var canvas = document.getElementById("viewport");
+        var ctx = canvas.getContext('2d');
+        w = canvas.width;
+        h = canvas.height;
+        wm = document.createElement('canvas');
+        wctx = wm.getContext('2d');
+        wtxt = 'video search results demo';
+        var video_preview_duration = 2;
 
     initialize_videoplayer();
     
