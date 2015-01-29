@@ -91,10 +91,11 @@
         
         console.log('called search function, waiting for results');
         console.log(media_search_in_progress);
-        while (media_search_in_progress === 'true') {
+        console.log(media_search_in_progress === true);
+        while (media_search_in_progress === true) {
             console.log(media_search_in_progress);
         }
-        
+        console.log(media_search_in_progress === true);
         console.log('completed search, first video =');
         console.log(video_playlist[0]);
 
