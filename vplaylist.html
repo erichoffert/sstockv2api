@@ -10,45 +10,12 @@
    var video_preview_duration = -1;
    var music_playback = -1;
    var video_count = 0;
-   var video_item = 0;
+   var video_item, audio_item = 0;
    var per_page = 25;
    var video_playlist = [];
+   var audio_playlist = [];
    var music_playlist;
-   var media_search_in_progress = true;
    var keyword;
-   var ocean_playlist = 
-   ["http://ak8.picdn.net/shutterstock/videos/3711827/preview/stock-footage-high-quality-looping-animation-of-ocean-waves-from-underwater-with-floating-plankton-light-rays.mp4",
-   "http://ak2.picdn.net/shutterstock/videos/4147426/preview/stock-footage-surfer-on-blue-ocean-wave-getting-barreled.mp4",
-   "http://ak3.picdn.net/shutterstock/videos/5889806/preview/stock-footage-rough-sea-loop-3d-a-loop-of-big-waves-in-an-agitated-ocean-camera-goes-underwater-several-times-4k.mp4",
-   "http://ak6.picdn.net/shutterstock/videos/4470491/preview/stock-footage-a-young-woman-with-a-slender-figure-is-engaged-in-gymnastics-at-sea-at-sunrise-she-makes-a-run.mp4",
-   "http://ak3.picdn.net/shutterstock/videos/2474963/preview/stock-footage-ocean-fly-over-hd-high-speed-animation-just-above-the-ocean-waves-facing-the-sun.mp4",
-   "http://ak7.picdn.net/shutterstock/videos/5584481/preview/stock-footage-ocean-waves-storm-sea-spray.mp4",
-   "http://ak6.picdn.net/shutterstock/videos/3805313/preview/stock-footage-amazing-sunset-over-the-tropical-beach.mp4",
-   "http://ak8.picdn.net/shutterstock/videos/3816974/preview/stock-footage-underwater-angle-of-tropical-blue-ocean-wave-breaking.mp4",
-   "http://ak8.picdn.net/shutterstock/videos/6596987/preview/stock-footage-high-contrast-pov-shot-of-silhouetted-surfer-as-he-rides-through-the-barrel-of-a-dark-orange-wave.mp4",
-   "http://ak1.picdn.net/shutterstock/videos/5197214/preview/stock-footage-young-man-kitesurfing-in-ocean-extreme-summer-sport-hd-slow-motion.mp4"]
-   var waterfall_playlist = 
-   ["http://ak9.picdn.net/shutterstock/videos/5882156/preview/stock-footage-extremely-high-pov-cliff-jump-into-water-above-a-waterfall-trees-and-rocks-below-on-a-beautiful.mp4",
-   "http://ak4.picdn.net/shutterstock/videos/2208901/preview/stock-footage-close-approach-to-waterfall-by-boat-milford-sound-fjord-south-island-new-zealand.mp4",
-   "http://ak9.picdn.net/shutterstock/videos/4080727/preview/stock-footage-waterfalls-fps-lm-slow-motion-x.mp4",
-   "http://ak8.picdn.net/shutterstock/videos/3363962/preview/stock-footage-a-river-flows-over-rocks-in-this-beautiful-scene-in-the-tennessee-mountains-in-autumn.mp4",
-   "http://ak1.picdn.net/shutterstock/videos/5463350/preview/stock-footage-waterfall-river-paradise-rapids-a-scenic-view-over-a-large-waterfall-rapids-rush-over-the-edge-of.mp4",
-   "http://ak3.picdn.net/shutterstock/videos/5462669/preview/stock-footage-waterfall-river-paradise-trees-a-sweeping-view-over-a-large-waterfall-rapids-rush-over-the-edge.mp4",
-   "http://ak0.picdn.net/shutterstock/videos/2693297/preview/stock-footage-mountain-stream-in-the-forest.mp4",
-   "http://ak3.picdn.net/shutterstock/videos/3915752/preview/stock-footage-slow-motion-shot-of-a-natural-waterfall-shot-in-scotland-uk.mp4",
-   "http://ak8.picdn.net/shutterstock/videos/909853/preview/stock-footage-flowing-water-and-wave-time-laps-looping-color-slow-motion.mp4",
-   "http://ak7.picdn.net/shutterstock/videos/2988964/preview/stock-footage-a-dolly-shot-of-horseshoe-falls-in-tasmania-australia.mp4"]
-   var rocket_playlist = 
-   ["http://ak8.picdn.net/shutterstock/videos/5761580/preview/stock-footage-rocket-takeoff.mp4",
-   "http://ak2.picdn.net/shutterstock/videos/3399314/preview/stock-footage-beautiful-flight-through-space-to-the-earth-hd.mp4",
-   "http://ak7.picdn.net/shutterstock/videos/3757637/preview/stock-footage-rocket-launch.mp4",
-   "http://ak4.picdn.net/shutterstock/videos/3936710/preview/stock-footage--s-apollo-lifts-off-from-the-launchpad.mp4",
-   "http://ak8.picdn.net/shutterstock/videos/6068675/preview/stock-footage-space-station-and-space-shuttle-orbiting-earth-d-animation.mp4",
-   "http://ak5.picdn.net/shutterstock/videos/5277893/preview/stock-footage-an-astronaut-stationed-at-the-international-space-station-goes-on-a-spacewalk.mp4",
-   "http://ak0.picdn.net/shutterstock/videos/6167486/preview/stock-footage-space-shuttle-solid-rocket-boosters-separation-d-animation.mp4",
-   "http://ak6.picdn.net/shutterstock/videos/7118395/preview/stock-footage-space-shuttle-launch-d-animation.mp4",
-   "http://ak7.picdn.net/shutterstock/videos/6389657/preview/stock-footage-carrier-rocket-takes-off-d-animation.mp4",
-   "http://ak1.picdn.net/shutterstock/videos/2334638/preview/stock-footage-military-drone-uav-flying-over-desert-and-actively-seeking-enemy-targets.mp4"]
    var waterfall_music = "http://picdn.net/shutterstock/audio/146192/preview/fairytale_love.mp3";
    var ocean_music = "http://picdn.net/shutterstock/audio/27449/preview/come_on_gotta_surf.mp3";
    var rocket_music = "http://picdn.net/shutterstock/audio/200786/preview/live_from_space.mp3";
@@ -89,19 +56,19 @@
         // Search for video that matches 'keyword' and populate the video_playlist[] array with results
         
         search(opts, 'video');
-        
-        console.log('called search function, waiting for results');
+        search(opts, 'audio');
+        console.log('called video and audio search, waiting for results');
         
         
     });
     
-    function initialize_players() {
+    function initialize_video_player() {
     
         // Initialize the videoPlayer attributes for the <video> tag
         // Attach the "ontimeupdate" event listener which is called multiple times a second 
         
-        console.log('initialize video and audio players');
-        console.log('completed search, first video =');
+        console.log('initialize video player');
+        console.log('completed video search, first video =');
         console.log(video_playlist[0]);
 
         videoPlayer = document.getElementById('homevideo');
@@ -114,6 +81,16 @@
         videoPlayer.muted = 'true';
         videoPlayer.ontimeupdate = function() {onTrackedVideoFrame()};
         
+   }
+   
+   function initialize_audio_player() {
+    
+        // Initialize the audioPlayer attributes for the <audio> tag
+
+        console.log('initialize audio player');
+        console.log('completed search, first audio =');
+        console.log(audio_playlist[0]);
+        
         if (getQueryVariable("m") > 0) {
             music_playback = getQueryVariable("m");
         }
@@ -123,7 +100,7 @@
             
         if (music_playback > 0) {
             audioPlayer = document.getElementById('homeaudio');
-            audioPlayer.src = music_playlist;
+            audioPlayer.src = audio_playlist[0];
             audioPlayer.autoplay = 'true';
             audioPlayer.loop = 'true';
         }
@@ -174,6 +151,16 @@
       }
       
     function createAudioComponent(audio) {
+        
+       //   createAudioComponent(audio) sets the audio stream file for each audio item in the audio search
+       //   the audio stream url is added to the audio_playlist[] array which is accessed when the document is ready
+       
+        audio_preview_url = audio.assets.preview_mp3.url;
+        audio_playlist[audio_item] = audio_preview_url;
+        
+        console.log(audio_playlist[audio_item]);
+        
+        audio_item++;
 
     }
      
@@ -227,10 +214,14 @@
             console.log(i);
             var component = createComponentFunc(item);
             });
-            media_search_in_progress = false;
-            console.log('media search completed');
-            console.log(media_search_in_progress);
-            initialize_players();
+            if (media_type === 'video') {
+                console.log('video search completed');
+                initialize_video_player();
+            }
+            else if (media_type === 'audio') {
+                console.log('audio search completed');
+                initialize_audio_player();
+            }
 
         })
         .fail(function(xhr, status, err) {
