@@ -11,7 +11,8 @@
    var music_playback = -1;
    var video_count = 0;
    var video_item = 0;
-   var video_playlist, music_playlist;
+   var video_playlist = [];
+   var music_playlist;
    var keyword;
    var ocean_playlist = 
    ["http://ak8.picdn.net/shutterstock/videos/3711827/preview/stock-footage-high-quality-looping-animation-of-ocean-waves-from-underwater-with-floating-plankton-light-rays.mp4",
@@ -206,11 +207,12 @@
         })
         .done(function(data) {
             if (data.total_count === 0) {
-            //window.alert(“no search results”);
-            alert('no search results');
+            console.log('search: no  results');
             return;
             }
             $.each(data.data, function(i, item) {
+            console.log('search: processing data item');
+            console.log(i);
             var component = createComponentFunc(item);
             });
         })
