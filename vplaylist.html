@@ -17,9 +17,7 @@
    var audio_playlist = [];
    var music_playlist;
    var keyword;
-   var waterfall_music = "http://picdn.net/shutterstock/audio/146192/preview/fairytale_love.mp3";
-   var ocean_music = "http://picdn.net/shutterstock/audio/27449/preview/come_on_gotta_surf.mp3";
-   var rocket_music = "http://picdn.net/shutterstock/audio/200786/preview/live_from_space.mp3";
+
     
     $( document ).ready(function() {
         
@@ -32,23 +30,6 @@
         //    video_preview_duration = location.search[1];
         
         video_preview_duration = getQueryVariable("t");
-        keyword = getQueryVariable("k");
-        if (keyword === "ocean") {
-            //video_playlist = ocean_playlist;
-            music_playlist = ocean_music;
-        }
-        else if (keyword === "waterfall") {
-            //video_playlist = waterfall_playlist;
-            music_playlist = waterfall_music;
-        }
-        else if (keyword === "rocket") {
-            //video_playlist = rocket_playlist;
-            music_playlist = rocket_music;
-        }
-        else {
-            //video_playlist = ocean_playlist;
-            music_playlist = ocean_music;
-        }
         
         var opts = "query=" + keyword + "&page=1&per_page=" + per_page + "&safe=true";
   
@@ -355,10 +336,11 @@
   
   <!-- An HTML5 transparent text overlay is rendered on top of the video -->
   
-  <div class="overlay">
+  <!-- <div class="overlay">
     <h1>Video Search Playlist</h1>
     <p>Set clip length dynamically</p>
-  </div>
+  </div> 
+  -->
     
 </head>
 <body>
