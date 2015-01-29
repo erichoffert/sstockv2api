@@ -46,8 +46,8 @@
     //video1.addEventListener('ended', play, false);
     //video2.addEventListener('ended', play, false);
     
-    video1.ontimeupdate = function(video1) {onTrackedVideoFrame()};
-    video2.ontimeupdate = function(video2) {onTrackedVideoFrame()};
+    video1.ontimeupdate = function(event) {onTrackedVideoFrame(this.currentTime, this.duration)};
+    video2.ontimeupdate = function(event) {onTrackedVideoFrame(this.currentTime, this.duration)};
 
     // addVideo('http://www.w3schools.com/html/mov_bbb.mp4', 'http://www.w3schools.com/html/mov_bbb.ogg');
     // addVideo('http://media.sublimevideo.net/v/next15-sublime_360p.mp4', 'http://media.sublimevideo.net/v/next15-sublime_360p.webm');
@@ -104,24 +104,24 @@
         })
     }
     
-    function onTrackedVideoFrame(this){
+    function onTrackedVideoFrame(currentTime, duration){
         
        // Every 15 to 250ms, or whenever the media controller position changes, whichever happens least often
        // The user agent queues a task to fire a simple event named timeupdate at the MediaController.
        // Current time is printed to the developer console when each event is fired along with full duration of the video
        
-       console.log(this.duration);
-       console.log(this.currentTime);
+       console.log(currentTime);
+       console.log(duration);
        
        // If no video_preview_duration is set, then the entire duration of each video is used for playback
        
            if (video_preview_duration < 0)
-                video_preview_duration = this.duration;
+                video_preview_duration = duration;
                 
        // In this function, the current time is compared to the target video_preview_duration
        // If the video_preview_duration threshold is met then the video player advances to the next video in the playlist
                 
-           if (this.currentTime >= video_preview_duration) {
+           if (currentTime >= video_preview_duration) {
                 
                 var video = (isVideo1 === false ? video1 : video2),
                 next = current;
@@ -140,7 +140,7 @@
                 current = next;
                 
                 console.log("skipped to next video");
-                console.log(this.src); 
+                console.log(list[next]); 
            }
       }
       
