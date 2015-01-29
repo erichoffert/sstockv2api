@@ -13,6 +13,7 @@
    var video_item = 0;
    var video_playlist = [];
    var music_playlist;
+   var media_search_in_progress = true;
    var keyword;
    var ocean_playlist = 
    ["http://ak8.picdn.net/shutterstock/videos/3711827/preview/stock-footage-high-quality-looping-animation-of-ocean-waves-from-underwater-with-floating-plankton-light-rays.mp4",
@@ -87,6 +88,9 @@
         // Search for video that matches 'keyword' and populate the video_playlist[] array with results
         
         search(opts, 'video');
+        while (media_search_in_progress) {
+            ;
+        }
         
         console.log('completed search, first video =');
         console.log(video_playlist[0]);
@@ -218,6 +222,8 @@
             console.log(i);
             var component = createComponentFunc(item);
             });
+            media_search_in_progress = false;
+            console.log('media search completed');
         })
         .fail(function(xhr, status, err) {
             alert('Failed to retrieve ' + media_type + ' search results:\n' + JSON.stringify(xhr.responseJSON, null, 2));
