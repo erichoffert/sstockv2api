@@ -78,11 +78,8 @@
             music_playlist = ocean_music;
         }
         
-        var opt1 = 'client_id=2f710067f5b04f443fea&client_secret=5db3d2861d48d9ffe4c7134944823900eff34560&query=‘;
-        var opt2 = keyword;
-        var opt3 = '&page=1&per_page=10&safe=true’;
-        var opts = opt1 + opt2 + opt3;
-
+        var opts = "client_id=2f710067f5b04f443fea&client_secret=5db3d2861d48d9ffe4c7134944823900eff34560&query=" + keyword + "&page=1&per_page=10&safe=true";
+  
         console.log(opts);
         
         // Search for video that matches 'keyword' and populate the video_playlist[] array with results
