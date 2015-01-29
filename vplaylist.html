@@ -89,6 +89,12 @@
         
         search(opts, 'video');
         
+        console.log('called search function, waiting for results');
+        console.log(media_search_in_progress);
+        while (media_search_in_progress === 'true') {
+            console.log(media_search_in_progress);
+        }
+        
         console.log('completed search, first video =');
         console.log(video_playlist[0]);
 
@@ -221,6 +227,8 @@
             });
             media_search_in_progress = false;
             console.log('media search completed');
+            console.log(media_search_in_progress);
+
         })
         .fail(function(xhr, status, err) {
             alert('Failed to retrieve ' + media_type + ' search results:\n' + JSON.stringify(xhr.responseJSON, null, 2));
