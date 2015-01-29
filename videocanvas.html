@@ -25,6 +25,8 @@
         var video_preview_duration = 2;
 
         initialize_videoplayer();
+        
+    });
     
     window.requestAnimationFrame = (function(){
       return  window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame    ||
@@ -35,16 +37,9 @@
     
     function initialize_videoplayer() {
        
-        //wm.width = 380;
-        //wm.height = 20;
-    
-        
         video1.ontimeupdate = function(event) {onTrackedVideoFrame(this.currentTime, this.duration)};
         video2.ontimeupdate = function(event) {onTrackedVideoFrame(this.currentTime, this.duration)};
     
-        // addVideo('http://www.w3schools.com/html/mov_bbb.mp4', 'http://www.w3schools.com/html/mov_bbb.ogg');
-        // addVideo('http://media.sublimevideo.net/v/next15-sublime_360p.mp4', 'http://media.sublimevideo.net/v/next15-sublime_360p.webm');
-        
         addVideo("http://ak8.picdn.net/shutterstock/videos/3711827/preview/stock-footage-high-quality-looping-animation-of-ocean-waves-from-underwater-with-floating-plankton-light-rays.mp4","");
         addVideo("http://ak2.picdn.net/shutterstock/videos/4147426/preview/stock-footage-surfer-on-blue-ocean-wave-getting-barreled.mp4","");
         addVideo("http://ak3.picdn.net/shutterstock/videos/5889806/preview/stock-footage-rough-sea-loop-3d-a-loop-of-big-waves-in-an-agitated-ocean-camera-goes-underwater-several-times-4k.mp4","");
@@ -158,8 +153,6 @@
             video.src = vid.url;
         }
     }
-    
-});
     
 </script>
 </head>
