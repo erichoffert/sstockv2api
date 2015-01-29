@@ -46,8 +46,8 @@
     //video1.addEventListener('ended', play, false);
     //video2.addEventListener('ended', play, false);
     
-    video1.ontimeupdate = function() {onTrackedVideoFrame()};
-    video2.ontimeupdate = function() {onTrackedVideoFrame()};
+    video1.ontimeupdate = function(video1) {onTrackedVideoFrame()};
+    video2.ontimeupdate = function(video2) {onTrackedVideoFrame()};
 
     // addVideo('http://www.w3schools.com/html/mov_bbb.mp4', 'http://www.w3schools.com/html/mov_bbb.ogg');
     // addVideo('http://media.sublimevideo.net/v/next15-sublime_360p.mp4', 'http://media.sublimevideo.net/v/next15-sublime_360p.webm');
@@ -104,7 +104,7 @@
         })
     }
     
-    function onTrackedVideoFrame(){
+    function onTrackedVideoFrame(this){
         
        // Every 15 to 250ms, or whenever the media controller position changes, whichever happens least often
        // The user agent queues a task to fire a simple event named timeupdate at the MediaController.
