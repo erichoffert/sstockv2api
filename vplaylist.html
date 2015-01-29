@@ -87,6 +87,9 @@
         // Search for video that matches 'keyword' and populate the video_playlist[] array with results
         
         search(opts, 'video');
+        
+        console.log('completed search, first video =');
+        console.log(video_playlist[0]);
 
         // Initialize the videoPlayer attributes for the <video> tag
         // Attach the "ontimeupdate" event listener which is called multiple times a second 
