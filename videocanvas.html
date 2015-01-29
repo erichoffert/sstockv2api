@@ -8,6 +8,8 @@
    <title>HTML5 video canvas playlist</title> 
    <script>
 
+    var video_preview_duration = 2;
+    
     window.requestAnimationFrame = (function(){
       return  window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame    ||
               function( callback ){
@@ -17,7 +19,6 @@
     
     $( document ).ready(function() {
 
-    
     var canvas = document.getElementById("viewport");
 
     var ctx = canvas.getContext('2d'),
@@ -42,11 +43,13 @@
     wctx.textBaseline = 'top';
     wctx.fillText(wtxt, 0, 0);
     
-    video1.addEventListener('ended', play, false);
-    video2.addEventListener('ended', play, false);
+    //video1.addEventListener('ended', play, false);
+    //video2.addEventListener('ended', play, false);
     
+    video1.ontimeupdate = function() {onTrackedVideoFrame()};
+    video2.ontimeupdate = function() {onTrackedVideoFrame()};
+
     // addVideo('http://www.w3schools.com/html/mov_bbb.mp4', 'http://www.w3schools.com/html/mov_bbb.ogg');
-    
     // addVideo('http://media.sublimevideo.net/v/next15-sublime_360p.mp4', 'http://media.sublimevideo.net/v/next15-sublime_360p.webm');
     
     addVideo("http://ak8.picdn.net/shutterstock/videos/3711827/preview/stock-footage-high-quality-looping-animation-of-ocean-waves-from-underwater-with-floating-plankton-light-rays.mp4","");
@@ -101,6 +104,46 @@
         })
     }
     
+    function onTrackedVideoFrame(){
+        
+       // Every 15 to 250ms, or whenever the media controller position changes, whichever happens least often
+       // The user agent queues a task to fire a simple event named timeupdate at the MediaController.
+       // Current time is printed to the developer console when each event is fired along with full duration of the video
+       
+       console.log(this.duration);
+       console.log(this.currentTime);
+       
+       // If no video_preview_duration is set, then the entire duration of each video is used for playback
+       
+           if (video_preview_duration < 0)
+                video_preview_duration = this.duration;
+                
+       // In this function, the current time is compared to the target video_preview_duration
+       // If the video_preview_duration threshold is met then the video player advances to the next video in the playlist
+                
+           if (this.currentTime >= video_preview_duration) {
+                
+                var video = (isVideo1 === false ? video1 : video2),
+                next = current;
+        
+                isVideo1 = !isVideo1;
+            
+                next++;
+                if (next > list.length - 1) next = 0;
+                
+                if (list.length > 0) getVideo(list[next]);
+                    
+                /// start video
+                video.play();
+                isPlaying = true;
+                
+                current = next;
+                
+                console.log("skipped to next video");
+                console.log(this.src); 
+           }
+      }
+      
     function getVideo(vid, callback) {
     
         var video = (isVideo1 === false ? video1 : video2),
