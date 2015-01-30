@@ -52,10 +52,10 @@
     
     function initialize_video_player() {
        
+        video1.controls = true;
+        video2.controls = true;
         video1.ontimeupdate = function(event) {onTrackedVideoFrame(this.currentTime, this.duration)};
-        //video1.controls = true;
         video2.ontimeupdate = function(event) {onTrackedVideoFrame(this.currentTime, this.duration)};
-        //video2.controls = true;
 
         getVideo(list[0], play);
         
