@@ -213,6 +213,19 @@
         
       }
       
+      function createAudioComponent(audio) {
+        
+       //   createAudioComponent(audio) sets the audio stream file for each audio item in the audio search
+       //   the audio stream url is added to the audio_playlist[] array which is accessed when the document is ready
+       
+        audio_preview_url = audio.assets.preview_mp3.url;
+        audio_playlist[audio_item] = audio_preview_url;
+        
+        console.log(audio_playlist[audio_item]);
+        
+        audio_item++;
+    }
+      
       function search(opts, media_type) {
         
         //  search(opts,media_type) uses Ajax to make an https call to retrieve media search results
