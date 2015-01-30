@@ -52,8 +52,6 @@
     
     function initialize_video_player() {
        
-        video1.controls = true;
-        video2.controls = true;
         video1.ontimeupdate = function(event) {onTrackedVideoFrame(this.currentTime, this.duration)};
         video2.ontimeupdate = function(event) {onTrackedVideoFrame(this.currentTime, this.duration)};
 
@@ -155,6 +153,7 @@
     
         if (video.canPlayType("video/mp4").replace('no', '').length > 0) {
             video.src = vid.urlMP4;
+            video.controls = 'true';
         } else {
             video.src = vid.url;
         }
