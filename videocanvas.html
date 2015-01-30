@@ -8,8 +8,8 @@
    <title>HTML5 video canvas playlist</title> 
    <script>
 
-        video1 = document.createElement('video');
-        video2 = document.createElement('video');
+        //video1 = document.createElement('video');
+        //video2 = document.createElement('video');
         isVideo1 = false;
         list = [];
         current = 0;
@@ -54,28 +54,6 @@
        
         video1.ontimeupdate = function(event) {onTrackedVideoFrame(this.currentTime, this.duration)};
         video2.ontimeupdate = function(event) {onTrackedVideoFrame(this.currentTime, this.duration)};
-        
-        var elem = document.getElementById("video1");
-        if (elem.requestFullscreen) {
-          elem.requestFullscreen();
-        } else if (elem.msRequestFullscreen) {
-          elem.msRequestFullscreen();
-        } else if (elem.mozRequestFullScreen) {
-          elem.mozRequestFullScreen();
-        } else if (elem.webkitRequestFullscreen) {
-          elem.webkitRequestFullscreen();
-        }
-        elem = document.getElementById("video2");
-         if (elem.requestFullscreen) {
-          elem.requestFullscreen();
-        } else if (elem.msRequestFullscreen) {
-          elem.msRequestFullscreen();
-        } else if (elem.mozRequestFullScreen) {
-          elem.mozRequestFullScreen();
-        } else if (elem.webkitRequestFullscreen) {
-          elem.webkitRequestFullscreen();
-        }
-
 
         getVideo(list[0], play);
         
@@ -291,7 +269,10 @@
 
 <body>
 <center>
-<canvas id="viewport" width = '640' height = '360'></canvas>
+<canvas id="viewport" width = '640' height = '360'>
+<video id="video1"  controls="true"></video>
+<video id="video2"  controls="true"></video>
+</canvas>
 </center>
 
 </body>
