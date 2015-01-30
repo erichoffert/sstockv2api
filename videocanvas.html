@@ -86,7 +86,7 @@
         if (list.length > 0) getVideo(list[next]);
             
         /// start video
-        video.controls = 'true';
+        video.controls = true;
         video.play();
         isPlaying = true;
         
@@ -139,6 +139,7 @@
                 if (list.length > 0) getVideo(list[next]);
                     
                 /// start video
+                video.controls = true;
                 video.play();
                 isPlaying = true;
                 
