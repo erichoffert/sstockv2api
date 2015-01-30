@@ -10,6 +10,7 @@
 
         video1 = document.createElement('video');
         video2 = document.createElement('video');
+        audio = document.createElement('audio');
         isVideo1 = false;
         list = [];
         current = 0;
@@ -20,7 +21,11 @@
         var per_page = 25;
         var video_playlist = [];
         var keyword;
-        
+        var music_playback = -1;
+        var audio_item = 0;
+        var audio_playlist = [];
+        var music_playlist;
+
         video1.controls = 'true';
         video1.muted = 'true';
         video2.controls = 'true';
@@ -43,10 +48,9 @@
         // Search for video that matches 'keyword' and populate the video_playlist[] array with results
         
         search(opts, 'video');
-        //search(opts, 'audio');
+        search(opts, 'audio');
         console.log('called video  search, waiting for results');
-        //initialize_videoplayer();
-        
+
     
     window.requestAnimationFrame = (function(){
       return  window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame    ||
@@ -66,6 +70,28 @@
         render();
     
     }
+    
+    function initialize_audio_player() {
+    
+        // Initialize the audioPlayer attributes for the <audio> tag
+        console.log('initialize audio player');
+        console.log('completed search, first audio =');
+        console.log(audio_playlist[0]);
+        
+        if (getQueryVariable("m") > 0) {
+            music_playback = getQueryVariable("m");
+        }
+        
+        if (music_playback > 0) console.log("music playback");
+        console.log(music_playback);
+            
+        if (music_playback > 0) {
+            audio = document.getElementById('audio');
+            audio.src = audio_playlist[0];
+            audio.autoplay = 'true';
+            audio.loop = 'true';
+        }
+   }
     
     function play(){
     
@@ -196,16 +222,13 @@
         
         var createComponentFunc;
         
-        //if (media_type === 'image') {
-        //    createComponentFunc = createImageComponent;
-        //}
-        //else if (media_type === 'video') {
-        if (media_type === 'video') {
+        if (media_type === 'audio') {
+            createComponentFunc = createAudioComponent;
+        }
+        else if (media_type === 'video') {
             createComponentFunc = createVideoComponent;
         }
-        //else
-        //    createComponentFunc = createAudioComponent;
-            
+
         //  set the media_url for search
         
         var media_url;
@@ -238,10 +261,10 @@
                 console.log('video search completed');
                 initialize_video_player();
             }
-            //else if (media_type === 'audio') {
-            //    console.log('audio search completed');
-            //    initialize_audio_player();
-            //}
+            else if (media_type === 'audio') {
+                console.log('audio search completed');
+                initialize_audio_player();
+            }
         })
         .fail(function(xhr, status, err) {
             alert('Failed to retrieve ' + media_type + ' search results:\n' + JSON.stringify(xhr.responseJSON, null, 2));
