@@ -53,9 +53,9 @@
     function initialize_video_player() {
        
         video1.ontimeupdate = function(event) {onTrackedVideoFrame(this.currentTime, this.duration)};
-        video1.controls = true;
+        //video1.controls = true;
         video2.ontimeupdate = function(event) {onTrackedVideoFrame(this.currentTime, this.duration)};
-        video2.controls = true;
+        //video2.controls = true;
 
         getVideo(list[0], play);
         
@@ -106,8 +106,8 @@
        // The user agent queues a task to fire a simple event named timeupdate at the MediaController.
        // Current time is printed to the developer console when each event is fired along with full duration of the video
        
-       //console.log(currentTime);
-       //console.log(duration);
+       console.log(currentTime);
+       console.log(duration);
        
        // If no video_preview_duration is set, then the entire duration of each video is used for playback
        
@@ -135,7 +135,7 @@
                 current = next;
                 
                 console.log("skipped to next video");
-                console.log(list[next].urlMP4); 
+                //console.log(list[next].urlMP4); 
            }
       }
       
