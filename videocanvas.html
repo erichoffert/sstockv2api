@@ -14,7 +14,12 @@
         list = [];
         current = 0;
         isPlaying = false;
-        var video_preview_duration = 2;
+        var video_preview_duration = -1;
+        var video_count = 0;
+        var video_item = 0;
+        var per_page = 25;
+        var video_playlist = [];
+        var keyword;
 
     $( document ).ready(function() {
         
@@ -24,7 +29,18 @@
         h = canvas.height;
         wm = document.createElement('canvas');
 
-        initialize_videoplayer();
+        video_preview_duration = getQueryVariable("t");
+        keyword = getQueryVariable("k");
+        var opts = "query=" + keyword + "&page=1&per_page=" + per_page + "&safe=true";
+  
+        console.log(opts);
+        
+        // Search for video that matches 'keyword' and populate the video_playlist[] array with results
+        
+        search(opts, 'video');
+        //search(opts, 'audio');
+        console.log('called video  search, waiting for results');
+        //initialize_videoplayer();
         
     
     window.requestAnimationFrame = (function(){
@@ -34,21 +50,21 @@
               };
     })();
     
-    function initialize_videoplayer() {
+    function initialize_video_player() {
        
         video1.ontimeupdate = function(event) {onTrackedVideoFrame(this.currentTime, this.duration)};
         video2.ontimeupdate = function(event) {onTrackedVideoFrame(this.currentTime, this.duration)};
     
-        addVideo("http://ak8.picdn.net/shutterstock/videos/3711827/preview/stock-footage-high-quality-looping-animation-of-ocean-waves-from-underwater-with-floating-plankton-light-rays.mp4","");
-        addVideo("http://ak2.picdn.net/shutterstock/videos/4147426/preview/stock-footage-surfer-on-blue-ocean-wave-getting-barreled.mp4","");
-        addVideo("http://ak3.picdn.net/shutterstock/videos/5889806/preview/stock-footage-rough-sea-loop-3d-a-loop-of-big-waves-in-an-agitated-ocean-camera-goes-underwater-several-times-4k.mp4","");
-        addVideo("http://ak6.picdn.net/shutterstock/videos/4470491/preview/stock-footage-a-young-woman-with-a-slender-figure-is-engaged-in-gymnastics-at-sea-at-sunrise-she-makes-a-run.mp4","");
-        addVideo("http://ak3.picdn.net/shutterstock/videos/2474963/preview/stock-footage-ocean-fly-over-hd-high-speed-animation-just-above-the-ocean-waves-facing-the-sun.mp4","");
-        addVideo("http://ak7.picdn.net/shutterstock/videos/5584481/preview/stock-footage-ocean-waves-storm-sea-spray.mp4","");
-        addVideo("http://ak6.picdn.net/shutterstock/videos/3805313/preview/stock-footage-amazing-sunset-over-the-tropical-beach.mp4","");
-        addVideo("http://ak8.picdn.net/shutterstock/videos/3816974/preview/stock-footage-underwater-angle-of-tropical-blue-ocean-wave-breaking.mp4","");
-        addVideo("http://ak8.picdn.net/shutterstock/videos/6596987/preview/stock-footage-high-contrast-pov-shot-of-silhouetted-surfer-as-he-rides-through-the-barrel-of-a-dark-orange-wave.mp4","");
-        addVideo("http://ak1.picdn.net/shutterstock/videos/5197214/preview/stock-footage-young-man-kitesurfing-in-ocean-extreme-summer-sport-hd-slow-motion.mp4","");
+        //addVideo("http://ak8.picdn.net/shutterstock/videos/3711827/preview/stock-footage-high-quality-looping-animation-of-ocean-waves-from-underwater-with-floating-plankton-light-rays.mp4","");
+        //addVideo("http://ak2.picdn.net/shutterstock/videos/4147426/preview/stock-footage-surfer-on-blue-ocean-wave-getting-barreled.mp4","");
+        //addVideo("http://ak3.picdn.net/shutterstock/videos/5889806/preview/stock-footage-rough-sea-loop-3d-a-loop-of-big-waves-in-an-agitated-ocean-camera-goes-underwater-several-times-4k.mp4","");
+        //addVideo("http://ak6.picdn.net/shutterstock/videos/4470491/preview/stock-footage-a-young-woman-with-a-slender-figure-is-engaged-in-gymnastics-at-sea-at-sunrise-she-makes-a-run.mp4","");
+        //addVideo("http://ak3.picdn.net/shutterstock/videos/2474963/preview/stock-footage-ocean-fly-over-hd-high-speed-animation-just-above-the-ocean-waves-facing-the-sun.mp4","");
+        //addVideo("http://ak7.picdn.net/shutterstock/videos/5584481/preview/stock-footage-ocean-waves-storm-sea-spray.mp4","");
+        //addVideo("http://ak6.picdn.net/shutterstock/videos/3805313/preview/stock-footage-amazing-sunset-over-the-tropical-beach.mp4","");
+        //addVideo("http://ak8.picdn.net/shutterstock/videos/3816974/preview/stock-footage-underwater-angle-of-tropical-blue-ocean-wave-breaking.mp4","");
+        //addVideo("http://ak8.picdn.net/shutterstock/videos/6596987/preview/stock-footage-high-contrast-pov-shot-of-silhouetted-surfer-as-he-rides-through-the-barrel-of-a-dark-orange-wave.mp4","");
+       // addVideo("http://ak1.picdn.net/shutterstock/videos/5197214/preview/stock-footage-young-man-kitesurfing-in-ocean-extreme-summer-sport-hd-slow-motion.mp4","");
         
         getVideo(list[0], play);
         
@@ -151,6 +167,109 @@
         } else {
             video.src = vid.url;
         }
+    }
+    
+    function createVideoComponent(video) {
+       
+       //   createVideoComponent(video) sets the video stream file for each video item in the video search
+       //   the video stream url is added to the video_playlist[] array which is accessed when the document is ready
+       
+        var video_preview = 'large';
+     
+        if (video_preview === 'small') {
+          video_preview_url = video.assets.thumb_mp4.url;
+        }
+        else if (video_preview === 'large') {
+          video_preview_url = video.assets.preview_mp4.url;
+        }
+        
+        video_playlist[video_item] = video_preview_url;
+        addVideo(video_playlist[video_item],"");
+        
+        console.log(video_playlist[video_item]);
+        
+        video_item++;
+        
+      }
+      
+      function search(opts, media_type) {
+        
+        //  search(opts,media_type) uses Ajax to make an https call to retrieve media search results
+        
+        var clientId = "2f710067f5b04f443fea";
+        var clientSecret = "5db3d2861d48d9ffe4c7134944823900eff34560";
+        
+        var createComponentFunc;
+        
+        //if (media_type === 'image') {
+        //    createComponentFunc = createImageComponent;
+        //}
+        //else if (media_type === 'video') {
+        if (media_type === 'video') {
+            createComponentFunc = createVideoComponent;
+        }
+        //else
+        //    createComponentFunc = createAudioComponent;
+            
+        //  set the media_url for search
+        
+        var media_url;
+        if (media_type === 'image')
+            media_url = 'https://api.shutterstock.com/v2/' + media_type + 's/search';
+        else if (media_type === 'video')
+            media_url = 'https://api.shutterstock.com/v2/' + media_type + 's/search';
+        else
+            media_url = 'https://api.shutterstock.com/v2/' + media_type + '/search';
+        
+        var jqxhr = $.ajax({
+            url: media_url,
+            data: opts,
+            headers: {
+            // Base 64 encode 'client_id:client_secret', use Client ID and Client Secret for the Authorization header
+            Authorization: 'Basic ' + window.btoa(clientId + ':' + clientSecret)
+            }
+        })
+        .done(function(data) {
+            if (data.total_count === 0) {
+            console.log('search: no  results');
+            return;
+            }
+            $.each(data.data, function(i, item) {
+            console.log('search: processing data item');
+            console.log(i);
+            var component = createComponentFunc(item);
+            });
+            if (media_type === 'video') {
+                console.log('video search completed');
+                initialize_video_player();
+            }
+            //else if (media_type === 'audio') {
+            //    console.log('audio search completed');
+            //    initialize_audio_player();
+            //}
+        })
+        .fail(function(xhr, status, err) {
+            alert('Failed to retrieve ' + media_type + ' search results:\n' + JSON.stringify(xhr.responseJSON, null, 2));
+        });
+        
+        return jqxhr;
+    }
+    
+    function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+        }
+    }
+    console.log('Query variable %s not found', variable);
+    }
+      
+    window.onclick = clickAction;
+    function clickAction() {
+        window.alert("Added video to clipbox");
     }
     
     });
