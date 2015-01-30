@@ -53,19 +53,10 @@
     function initialize_video_player() {
        
         video1.ontimeupdate = function(event) {onTrackedVideoFrame(this.currentTime, this.duration)};
+        video1.controls = true;
         video2.ontimeupdate = function(event) {onTrackedVideoFrame(this.currentTime, this.duration)};
-    
-        //addVideo("http://ak8.picdn.net/shutterstock/videos/3711827/preview/stock-footage-high-quality-looping-animation-of-ocean-waves-from-underwater-with-floating-plankton-light-rays.mp4","");
-        //addVideo("http://ak2.picdn.net/shutterstock/videos/4147426/preview/stock-footage-surfer-on-blue-ocean-wave-getting-barreled.mp4","");
-        //addVideo("http://ak3.picdn.net/shutterstock/videos/5889806/preview/stock-footage-rough-sea-loop-3d-a-loop-of-big-waves-in-an-agitated-ocean-camera-goes-underwater-several-times-4k.mp4","");
-        //addVideo("http://ak6.picdn.net/shutterstock/videos/4470491/preview/stock-footage-a-young-woman-with-a-slender-figure-is-engaged-in-gymnastics-at-sea-at-sunrise-she-makes-a-run.mp4","");
-        //addVideo("http://ak3.picdn.net/shutterstock/videos/2474963/preview/stock-footage-ocean-fly-over-hd-high-speed-animation-just-above-the-ocean-waves-facing-the-sun.mp4","");
-        //addVideo("http://ak7.picdn.net/shutterstock/videos/5584481/preview/stock-footage-ocean-waves-storm-sea-spray.mp4","");
-        //addVideo("http://ak6.picdn.net/shutterstock/videos/3805313/preview/stock-footage-amazing-sunset-over-the-tropical-beach.mp4","");
-        //addVideo("http://ak8.picdn.net/shutterstock/videos/3816974/preview/stock-footage-underwater-angle-of-tropical-blue-ocean-wave-breaking.mp4","");
-        //addVideo("http://ak8.picdn.net/shutterstock/videos/6596987/preview/stock-footage-high-contrast-pov-shot-of-silhouetted-surfer-as-he-rides-through-the-barrel-of-a-dark-orange-wave.mp4","");
-       // addVideo("http://ak1.picdn.net/shutterstock/videos/5197214/preview/stock-footage-young-man-kitesurfing-in-ocean-extreme-summer-sport-hd-slow-motion.mp4","");
-        
+        video2.controls = true;
+
         getVideo(list[0], play);
         
         /// start loop
@@ -86,7 +77,6 @@
         if (list.length > 0) getVideo(list[next]);
             
         /// start video
-        video.controls = true;
         video.play();
         isPlaying = true;
         
@@ -116,8 +106,8 @@
        // The user agent queues a task to fire a simple event named timeupdate at the MediaController.
        // Current time is printed to the developer console when each event is fired along with full duration of the video
        
-       console.log(currentTime);
-       console.log(duration);
+       //console.log(currentTime);
+       //console.log(duration);
        
        // If no video_preview_duration is set, then the entire duration of each video is used for playback
        
@@ -139,7 +129,6 @@
                 if (list.length > 0) getVideo(list[next]);
                     
                 /// start video
-                video.controls = true;
                 video.play();
                 isPlaying = true;
                 
