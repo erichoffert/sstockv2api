@@ -4,20 +4,17 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>A simple DIY responsive slideshow made with HTML5, CSS3, and JavaScript</title>
+        <title>Photoshow</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src = "http://leemark.github.io/better-simple-slideshow/js/better-simple-slideshow.min.js"></script>
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
+        <script src="http://leemark.github.io/better-simple-slideshow/demo/js/hammer.min.js"></script> <!-- for swipe support on touch interfaces -->
         <link rel="stylesheet" href="http://leemark.github.io/better-simple-slideshow/css/simple-slideshow-styles.css">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
     </head>
     <body>
-        <!--[if lt IE 8]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
         <header>
-            <h1>A Better Simple Slideshow</h1>
-            <p><span class="desc">A simple DIY responsive JavaScript slideshow.</span> [<a href="https://github.com/leemark/better-simple-slideshow">GitHub<span> repo</span></a>]</p>
+            <h1>Photoshow</h1>
         </header>    
         <div class="bss-slides num1" tabindex="1" autofocus="autofocus">
             <figure>
@@ -37,13 +34,11 @@
             </figure>
         </div> <!-- // bss-slides -->  
   
-<footer>Example photos are property of their respective owners, all code is <a href="https://github.com/leemark/better-simple-slideshow/blob/gh-pages/LICENSE">freely licensed for your use</a>. <br>Made especially for you by <a href="http://themarklee.com">Mark Lee</a> aka <a href="http://twitter.com/@therealmarklee">@therealmarklee</a> <br><span>&#9774; + &hearts;</span></footer>        
-<script src="http://leemark.github.io/better-simple-slideshow/demo/js/hammer.min.js"></script><!-- for swipe support on touch interfaces -->
 
 <script>
 var opts = {
     auto : {
-        speed : 3500, 
+        speed : 2500, 
         pauseOnHover : true
     },
     fullScreen : false, 
