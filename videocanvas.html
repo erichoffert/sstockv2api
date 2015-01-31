@@ -18,13 +18,15 @@
         var video_preview_duration = -1;
         var video_count = 0;
         var video_item = 0;
-        var per_page = 25;
+        var video_per_page = 25;
         var video_playlist = [];
         var keyword;
         var music_playback = -1;
         var audio_item = 0;
+        var audio_per_page = 1;
         var audio_playlist = [];
         var music_playlist;
+        var opts = "";
 
         video1.controls = 'true';
         video1.muted = 'true';
@@ -41,17 +43,19 @@
 
         video_preview_duration = getQueryVariable("t");
         keyword = getQueryVariable("k");
-        var opts = "query=" + keyword + "&page=1&per_page=" + per_page + "&safe=true";
-  
-        console.log(opts);
-        
-        // Search for video that matches 'keyword' and populate the video_playlist[] array with results
-        
-        search(opts, 'video');
-        search(opts, 'audio');
-        console.log('called video  search, waiting for results');
 
-    
+        // Search for video that matches 'keyword' and populate the video_playlist[] array with results
+        opts = "query=" + keyword + "&page=1&per_page=" + video_per_page + "&safe=true";
+        console.log("video search string" + opts);
+        search(opts, 'video');
+        console.log('called video search, waiting for results');
+
+        // Search for audio that matches 'keyword' and populate the audio_playlist[] array with results
+        opts = "query=" + keyword + "&page=1&per_page=" + audio_per_page + "&safe=true";
+        console.log("audio search string" + opts);
+        search(opts, 'audio');
+        console.log('called audio search, waiting for results');
+
     window.requestAnimationFrame = (function(){
       return  window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame    ||
               function( callback ){
@@ -89,6 +93,7 @@
             audio1.src = audio_playlist[0];
             audio1.autoplay = 'true';
             audio1.loop = 'true';
+            audio1.load();
             audio1.play();
         }
    }
