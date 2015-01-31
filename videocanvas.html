@@ -53,7 +53,7 @@
         // Search for audio that matches 'keyword' and populate the audio_playlist[] array with results
         opts = "query=" + keyword + "&page=1&per_page=" + audio_per_page + "&safe=true";
         console.log("audio search string" + opts);
-        //search(opts, 'audio');
+        search(opts, 'audio');
         console.log('called audio search, waiting for results');
 
     window.requestAnimationFrame = (function(){
@@ -93,7 +93,6 @@
             audio1.src = audio_playlist[0];
             audio1.autoplay = 'true';
             audio1.loop = 'true';
-            audio1.load();
             audio1.play();
         }
    }
@@ -164,7 +163,6 @@
                     
                 /// start video
                 video.play();
-                audio1.play();
                 isPlaying = true;
                 
                 current = next;
