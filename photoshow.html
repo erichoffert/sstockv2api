@@ -42,23 +42,19 @@
 	function add_photos() {
 		
 		var thumbnail = $('<img>');
-		var figure = $('<figure>');
-		var photo_div = document.getElementsByClassName("bss-slides num1");
-		
-		console.log("retrieved div by class name");
-		console.log(photo_div);
+		var figure = $('<figure>');;
 		
 		$(thumbnail).attr('src', "http://image.shutterstock.com/display_pic_with_logo/79044/119109475/stock-photo-jumping-skier-119109475.jpg");
 		$(thumbnail).attr('width', "720");
 
-		$("photo_div")
-		 .append(figure)
+		$("figure")
 		 .append(thumbnail);
 			
-		console.log("set figure and img src for div by class name");
-		console.log(photo_div);
+		console.log("set figure and img src");
+		console.log(figure);
+		console.log(thumbnail);
 
-		return photo_div;
+		return figure;
 
 	}
 	
