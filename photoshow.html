@@ -15,13 +15,36 @@
 
     <script>
     
+        audio1 = document.createElement('audio');
+        var photo_preview_duration = -1;
+        var photo_item = 0;
+        var photo_per_page = 5;
+        var photo_playlist = [];
+        var slideshow_html = '';
+        var keyword;
+        var music_playback = -1;
+        var audio_item = 0;
+        var audio_per_page = 1;
+        var audio_playlist = [];
+        var opts = "";
+    
         $( window ).load(function() {
         	
-		console.log("add photos");
-		add_photos();
-		console.log("photo slideshow");
-		photo_slideshow();
-
+        	photo_preview_duration = getQueryVariable("t");
+	        keyword = getQueryVariable("k");
+	
+	        // Search for photo that matches 'keyword' and populate the photo_playlist[] array with results
+	        opts = "query=" + keyword + "&page=1&per_page=" + photo_per_page + "&safe=true";
+	        console.log("photo search string" + opts);
+	        search(opts, 'image');
+	        console.log('called photo search, waiting for results');
+	
+	        // Search for audio that matches 'keyword' and populate the audio_playlist[] array with results
+	        opts = "query=" + keyword + "&page=1&per_page=" + audio_per_page + "&safe=true";
+	        console.log("audio search string" + opts);
+	        search(opts, 'audio');
+	        console.log('called audio search, waiting for results');
+        	
         });
 
 	function photo_slideshow () {
@@ -37,17 +60,145 @@
 	function add_photos() {
 		var current_html;
 		var slideshow = document.getElementsByClassName("bss-slides num1");
-		var new_html1a = '<figure><img src="';
-		var new_html1b = 'http://image.shutterstock.com/display_pic_with_logo/79044/119109475/stock-photo-jumping-skier-119109475.jpg';
-		var new_html1c = '" width="720" /></figure>';
-   		var new_html2 = '<figure><img src="http://image.shutterstock.com/display_pic_with_logo/487144/144827767/stock-photo-full-length-of-skier-skiing-on-fresh-powder-snow-144827767.jpg" width="720" /></figure>';
-		var new_html3 = '<figure><img src="http://image.shutterstock.com/display_pic_with_logo/176449/120085720/stock-photo-skiing-winter-snow-sun-and-fun-family-enjoying-winter-vacations-120085720.jpg" width="720" /></figure>';
-		var new_html4 = '<figure><img src="http://image.shutterstock.com/display_pic_with_logo/79044/118366168/stock-photo-skier-in-mountains-prepared-piste-and-sunny-day-118366168.jpg" width="720" /></figure>';
+		
 		current_html = document.getElementsByClassName("bss-slides num1")[0].innerHTML;
-		document.getElementsByClassName("bss-slides num1")[0].innerHTML = new_html1a + new_html1b + new_html1c + new_html2 + new_html3 + new_html4;
+		document.getElementsByClassName("bss-slides num1")[0].innerHTML = slideshow_html;
+		
 		console.log(current_html);
-		console.log(new_html1a + new_html1b + new_html1c + new_html2 + new_html3 + new_html4);
+		console.log(slideshow_html);
 	}
+	
+	function initialize_audio_player() {
+    
+        // Initialize the audioPlayer attributes for the <audio> tag
+        console.log('initialize audio player');
+        console.log('completed search, first audio =');
+        console.log(audio_playlist[0]);
+        
+        if (getQueryVariable("m") > 0) {
+            music_playback = getQueryVariable("m");
+        }
+        
+        if (music_playback > 0) console.log("music playback");
+        console.log(music_playback);
+            
+        if (music_playback > 0) {
+            audio1.src = audio_playlist[0];
+            audio1.autoplay = 'true';
+            audio1.loop = 'true';
+            audio1.play();
+        }
+   }
+   
+   function createAudioComponent(audio) {
+        
+       //   createAudioComponent(audio) sets the audio stream file for each audio item in the audio search
+       //   the audio stream url is added to the audio_playlist[] array which is accessed when the document is ready
+       
+        audio_preview_url = audio.assets.preview_mp3.url;
+        audio_playlist[audio_item] = audio_preview_url;
+        
+        console.log(audio_playlist[audio_item]);
+        
+        audio_item++;
+    }
+    
+     function createImageComponent(image) {
+     	
+     	var new_html1a = '<figure><img src="';
+	var new_html1b = '';
+	var new_html1c = '" width="720" /></figure>';
+	var new_html = '';
+   	
+       //   createImageComponent(image) sets the photo file for each photo item in the photo search
+       //   the photo preview url is added to the photo_playlist[] array which is accessed when the window is loaded
+       
+        photo_playlist[photo_item] = image.assets.preview.url;
+        console.log(photo_playlist[photo_item]);
+        
+        new_html1b = photo_playlist[photo_item];
+        new_html = new_html1a + new_html1b + new_html1c;
+        
+        slideshow_html += new_html;
+        console.log(slideshow_html);
+        
+        photo_item++;
+    }
+      
+      function search(opts, media_type) {
+        
+        //  search(opts,media_type) uses Ajax to make an https call to retrieve media search results
+        
+        var clientId = "2f710067f5b04f443fea";
+        var clientSecret = "5db3d2861d48d9ffe4c7134944823900eff34560";
+        
+        var createComponentFunc;
+        
+        if (media_type === 'audio') {
+            createComponentFunc = createAudioComponent;
+        }
+        else if (media_type === 'image') {
+            createComponentFunc = createImageComponent;
+        }
+
+        //  set the media_url for search
+        
+        var media_url;
+        if (media_type === 'image')
+            media_url = 'https://api.shutterstock.com/v2/' + media_type + 's/search';
+        else if (media_type === 'video')
+            media_url = 'https://api.shutterstock.com/v2/' + media_type + 's/search';
+        else
+            media_url = 'https://api.shutterstock.com/v2/' + media_type + '/search';
+        
+        var jqxhr = $.ajax({
+            url: media_url,
+            data: opts,
+            headers: {
+            // Base 64 encode 'client_id:client_secret', use Client ID and Client Secret for the Authorization header
+            Authorization: 'Basic ' + window.btoa(clientId + ':' + clientSecret)
+            }
+        })
+        .done(function(data) {
+            if (data.total_count === 0) {
+            console.log('search: no  results');
+            return;
+            }
+            $.each(data.data, function(i, item) {
+            console.log('search: processing data item');
+            console.log(i);
+            var component = createComponentFunc(item);
+            });
+            if (media_type === 'image') {
+                console.log('photo search completed');
+                console.log("add photos");
+		add_photos();
+		console.log("photo slideshow");
+		photo_slideshow();
+            }
+            else if (media_type === 'audio') {
+                console.log('audio search completed');
+                initialize_audio_player();
+            }
+        })
+        .fail(function(xhr, status, err) {
+            alert('Failed to retrieve ' + media_type + ' search results:\n' + JSON.stringify(xhr.responseJSON, null, 2));
+        });
+        
+        return jqxhr;
+    }
+    
+    function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+        }
+    }
+    console.log('Query variable %s not found', variable);
+    }
 	
     </script>
     
