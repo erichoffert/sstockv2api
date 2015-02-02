@@ -54,12 +54,15 @@
 		    swipe : true
 		};
 		console.log("makeBSS function call");
+		// call the JavaScript library makeBSS which fades between N photo images in sequence using arguments in opts
 		makeBSS('.num1', opts);
 	}
 	
 	function add_photos() {
 		var current_html;
 		var slideshow = document.getElementsByClassName("bss-slides num1");
+		
+		// set the innerHTML DOM element text for the bss-slides <div> class comprised of <figure><img src> tags
 		
 		current_html = document.getElementsByClassName("bss-slides num1")[0].innerHTML;
 		document.getElementsByClassName("bss-slides num1")[0].innerHTML = slideshow_html;
@@ -82,6 +85,7 @@
         if (music_playback > 0) console.log("music playback");
         console.log(music_playback);
             
+        // if music_playback is enabled then set the <audio> src file, autoplay and loop enabled as true, start playing
         if (music_playback > 0) {
             audio1.src = audio_playlist[0];
             audio1.autoplay = 'true';
@@ -117,6 +121,9 @@
         console.log(photo_playlist[photo_item]);
         
         new_html1b = photo_playlist[photo_item];
+        
+        //  build up the string comprised of <figure><img src = "http:..." width = "x"></figure> tags for the slideshow
+        
         new_html = new_html1a + new_html1b + new_html1c;
         
         slideshow_html += new_html;
@@ -189,11 +196,15 @@
     }
     
     function getQueryVariable(variable) {
+    // parse the URL query string variables, where query is the query string
     var query = window.location.search.substring(1);
+    // split up the query string into components based on the & character
     var vars = query.split('&');
     for (var i = 0; i < vars.length; i++) {
+    	// split the substring for each & character into its constituent pairs (i.e., &t=2 becomes (t,2))
         var pair = vars[i].split('=');
         if (decodeURIComponent(pair[0]) == variable) {
+            // return the variable value corresponding to the variable string (i.e., return 2 for t)
             return decodeURIComponent(pair[1]);
         }
     }
