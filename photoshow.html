@@ -42,7 +42,7 @@
 	function add_photos() {
 		
 		var thumbnail = $('<img>');
-		var figure = $('<figure>');;
+		var figure = $('<figure>');
 		
 		$(thumbnail).attr('src', "http://image.shutterstock.com/display_pic_with_logo/79044/119109475/stock-photo-jumping-skier-119109475.jpg");
 		$(thumbnail).attr('width', "720");
@@ -50,9 +50,10 @@
 		$("figure")
 		 .append(thumbnail);
 			
-		console.log("set figure and img src");
-		console.log(figure);
-		console.log(thumbnail);
+		console.log(" figure, img src, and width");
+		console.log($(figure));
+		console.log($(thumbnail).attr('src')));
+		console.log($(thumbnail).attr('width')));
 
 		return figure;
 
