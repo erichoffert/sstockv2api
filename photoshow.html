@@ -37,8 +37,12 @@
 	function add_photos() {
 		var current_html;
 		var slideshow = document.getElementsByClassName("bss-slides num1");
+		var new_html1 = '<figure><img src="http://image.shutterstock.com/display_pic_with_logo/79044/119109475/stock-photo-jumping-skier-119109475.jpg" width="720" /></figure>';
+   		var new_html2 = '<figure><img src="http://image.shutterstock.com/display_pic_with_logo/487144/144827767/stock-photo-full-length-of-skier-skiing-on-fresh-powder-snow-144827767.jpg" width="720" /></figure>';
 		current_html = document.getElementsByClassName("bss-slides num1")[0].innerHTML;
+		document.getElementsByClassName("bss-slides num1")[0].innerHTML = new_html1 + new_html2;
 		console.log(current_html);
+		console.log(new_html1+new_html2);
 	}
 	
     </script>
