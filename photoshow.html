@@ -11,6 +11,26 @@
         <link rel="stylesheet" href="http://leemark.github.io/better-simple-slideshow/css/simple-slideshow-styles.css">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
     </head>
+    <script>
+    
+        $( document ).ready(function() {
+
+		photo_slideshow();
+
+        }
+
+	function photo_slideshow () {
+		var opts = {
+		    auto : true,
+		    fullScreen : false, 
+		    swipe : true
+		};
+		
+		makeBSS('.num1', opts);
+	}
+	
+    </script>
+
     <body>
     <center>
 	<div class="bss-slides num1" tabindex="1" autofocus="autofocus">
@@ -34,14 +54,7 @@
 	    </figure>
 	</div> <!-- // bss-slides -->  
   </center>
-<script>
-var opts = {
-    auto : true,
-    fullScreen : false, 
-    swipe : true
-};
-makeBSS('.num1', opts);
-</script>
+
 
 </body>
 
