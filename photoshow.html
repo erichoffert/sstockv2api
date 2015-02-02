@@ -44,7 +44,9 @@
 		$(thumbnail).attr('src', "http://image.shutterstock.com/display_pic_with_logo/79044/119109475/stock-photo-jumping-skier-119109475.jpg");
 		$(thumbnail).attr('width', "720");
 
-		$("photo_div").$(figure).($(thumbnail)); 
+		$("photo_div")
+		 .append(figure)
+		 .append(thumbnail);
 			
 		console.log("set figure and img src for div by class name");
 
