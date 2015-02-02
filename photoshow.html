@@ -16,14 +16,8 @@
     
         $( document ).ready(function() {
         	
-		var slideshow = document.getElementsByClassName("bss-slides num1");
-		var photo;
-
 		console.log("add photos");
-
-		photo = add_photos();
-		$("slideshow").append(photo);
-		
+		add_photos();
 		console.log("photo slideshow");
 		photo_slideshow();
 
@@ -41,21 +35,16 @@
 	
 	function add_photos() {
 		
-		var figure = $('<figure>');
+		var slideshow = document.getElementsByClassName("bss-slides num1");
 		var thumbnail = $('<img>');
 
 		$(thumbnail).attr('src', "http://image.shutterstock.com/display_pic_with_logo/79044/119109475/stock-photo-jumping-skier-119109475.jpg");
 		$(thumbnail).attr('width', "720");
 
-		$("figure")
-		 .append(thumbnail);
+		($slideshow).append("<figure>",thumbnail,"</figure>");
 			
-		console.log(" figure, img src, and width");
-		console.log($(figure));
 		console.log($(thumbnail).attr('src'));
 		console.log($(thumbnail).attr('width'));
-
-		return figure;
 
 	}
 	
