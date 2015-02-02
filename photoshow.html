@@ -37,36 +37,8 @@
 	function add_photos() {
 		
 		var slideshow = document.getElementsByClassName("bss-slides num1");
-		var figure = $('<figure>');
-		var thumbnail = $('<img>');
-
-		$(thumbnail).attr('src', "http://image.shutterstock.com/display_pic_with_logo/79044/119109475/stock-photo-jumping-skier-119109475.jpg");
-		$(thumbnail).attr('width', "720");
-		
-		$(figure)
-		  .addClass('thumbnail-wrapper')
-		  .append(thumbnail);
-		  
-		$("slideshow").append($(figure));
-		console.log($(slideshow));
-		console.log($(thumbnail));
-		console.log($(thumbnail).attr('src'));
-		console.log($(thumbnail).attr('width'));
-
-		$(thumbnail).attr('src', "http://image.shutterstock.com/display_pic_with_logo/487144/144827767/stock-photo-full-length-of-skier-skiing-on-fresh-powder-snow-144827767.jpg");
-		$(thumbnail).attr('width', "720");
-		
-		$(figure)
-		  .addClass('thumbnail-wrapper')
-		  .append(thumbnail);
-		
-		$("slideshow").append($(figure));
-			
-		console.log($(slideshow));
-		console.log($(thumbnail));
-		console.log($(thumbnail).attr('src'));
-		console.log($(thumbnail).attr('width'));
-
+		current_html = $("slideshow").innerHTML;
+		console.log(current_html);
 	}
 	
     </script>
