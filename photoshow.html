@@ -34,7 +34,7 @@
 	        keyword = getQueryVariable("k");
 	
 	        // Search for photo that matches 'keyword' and populate the photo_playlist[] array with results
-	        opts = "query=" + keyword + "&page=1&per_page=" + photo_per_page + "&safe=true";
+	        opts = "query=" + keyword + "&page=1&per_page=" + photo_per_page + "&image_type=photo&safe=true";
 	        console.log("photo search string" + opts);
 	        search(opts, 'image');
 	        console.log('called photo search, waiting for results');
