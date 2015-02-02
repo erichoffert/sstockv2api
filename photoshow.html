@@ -12,6 +12,15 @@
         <link rel="stylesheet" href="http://leemark.github.io/better-simple-slideshow/css/simple-slideshow-styles.css">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
     </head>
+        <body>
+    <center>
+	<div class="bss-slides num1" tabindex="1" autofocus="autofocus">
+	    <figure><img src="http://image.shutterstock.com/display_pic_with_logo/487144/144827767/stock-photo-full-length-of-skier-skiing-on-fresh-powder-snow-144827767.jpg" width="720" /></figure>
+	</div> <!-- // bss-slides -->  
+  </center>
+
+
+</body>
     <script>
     
         $( document ).ready(function() {
@@ -37,14 +46,17 @@
 		
 		var slideshow = document.getElementsByClassName("bss-slides num1");
 		var thumbnail = $('<img>');
+		var thumb;
 
 		$(thumbnail).attr('src', "http://image.shutterstock.com/display_pic_with_logo/79044/119109475/stock-photo-jumping-skier-119109475.jpg");
 		$(thumbnail).attr('width', "720");
-
-		$("slideshow").append("<figure>",$(thumbnail),"</figure>");
+		
+		thumb = $thumbnail;
+		
+		$("slideshow").append("<figure>",thumb,"</figure>");
 			
 		console.log($(slideshow));
-		console.log($(thumbnail));
+		console.log(thumb);
 		console.log($(thumbnail).attr('src'));
 		console.log($(thumbnail).attr('width'));
 
@@ -52,16 +64,6 @@
 	
     </script>
 
-    <body>
-    <center>
-	<div class="bss-slides num1" tabindex="1" autofocus="autofocus">
-	    <figure>
-		      <img src="http://image.shutterstock.com/display_pic_with_logo/487144/144827767/stock-photo-full-length-of-skier-skiing-on-fresh-powder-snow-144827767.jpg" width="720" /> 
-	    </figure>
-	</div> <!-- // bss-slides -->  
-  </center>
 
-
-</body>
 
 </html>
