@@ -15,9 +15,10 @@
     
         $( document ).ready(function() {
 
+		console.log("photo slideshow");
 		photo_slideshow();
 
-        }
+        });
 
 	function photo_slideshow () {
 		var opts = {
@@ -25,7 +26,7 @@
 		    fullScreen : false, 
 		    swipe : true
 		};
-		
+		console.log("makeBSS function call");
 		makeBSS('.num1', opts);
 	}
 	
