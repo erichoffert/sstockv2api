@@ -15,9 +15,16 @@
     <script>
     
         $( document ).ready(function() {
+        	
+		var slideshow = document.getElementsByClassName("bss-slides num1");
+		var photo;
 
+		console.log("add photos");
+
+		photo = add_photos();
+		$slideshow.append(photo_element);
+		
 		console.log("photo slideshow");
-		add_photos();
 		photo_slideshow();
 
         });
@@ -49,7 +56,9 @@
 		 .append(thumbnail);
 			
 		console.log("set figure and img src for div by class name");
+		console.log(photo_div);
 
+		return photo_div;
 
 	}
 	
